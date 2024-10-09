@@ -177,6 +177,108 @@ La llicència Creative Commons que més s’assembla és la CC BY-SA, que permet
 
 ##Programari
 
+###Introducció
+
+El programari és tot allò que instal·lem perquè el nostre ordinador funcioni com cal, des d'aplicacions fins a eines del sistema. En Linux, hi ha diverses formes de gestionar el programari, ja sigui amb eines gràfiques o per línia de comandes.
+
+
+###Centre de programari
+El centre de programari és una aplicació gràfica, com una botiga d’apps, que permet instal·lar i eliminar programes de manera fàcil i visual. És molt útil trobar i posar aplicacions sense tocar la línia de comandes, només cercant i fent clic.
+
+1. Per instal·lar un programa a través del ubuntu software haurem de cercar el nom del programa primer i clicar "Install". En aquest cas l'exemple és el programa Gimp. 
+![ubuntusoftware](./fotos/ubuntusoftware1.png)
+
+2. Per desinstal·lar haurem de clicar en "Uninstall".   
+![ubuntusoftware](./fotos/ubuntusoftware2.png)
+
+###APT
+
+1. Primer haurem de actualitzar el repositori de paquets.   
+![apt](./fotos/apt1.png)
+
+2. Seguidament, instal·larem el programa gimp. 
+![apt](./fotos/apt2.png)
+
+3. Després, executarem el programa.
+![apt](./fotos/apt3.png)
+
+4. Una vegada, executat ja podrem utilitzar-lo.
+![apt](./fotos/apt4.png)
+
+5. Per últim, eliminarem gimp i intentarem executar-lo per comprovar que la eliminació s'ha realitzat bé.
+![apt](./fotos/apt5.png)
+![apt](./fotos/apt6.png)
+
+###Aptitude
+Aptitude és com una versió més potent de APT amb una interfície fàcil per gestionar paquets des de la línia de comandes. Serveix per instal·lar, actualitzar i eliminar paquets amb més control.
+
+1. El primer que haurem de fer és instal·lar aptitude.  
+![aptitude](./fotos/aptitude1.png)
+
+2. Seguidament, instal·larem el programa geany amb aptitude.    
+![aptitude](./fotos/aptitude2.png)
+
+3. Una vegada instal·lat, executarem el programa amb la comanda "geany".    
+![aptitude](./fotos/aptitude3.png)
+
+4. Per últim, desinstal·larem el programa amb "aptitude remove".    
+![aptitude](./fotos/aptitude4.png)
+
+
+###DPKG
+DPKG és l'eina bàsica per gestionar paquets en sistemes com Debian o Ubuntu. És útil per instal·lar i gestionar paquets .deb de manera manual, sense utilitzar repositoris.
+
+1. Per començar descarregarem un paquet .deb d'internet i l'instal·larem amb dpkg. Com podem observar a la captura per poder instal·lar el programa haurem de triar la versió amd, en aquest cas inicialment vaig provar-ho amb arm i efectivament, no va funcionar.    
+![deb](./fotos/deb1.png)
+
+
+2. Seguidament executarem programa amb la comanda "pacman" i començarà a funcionar el videojoc. 
+![deb](./fotos/deb2.png)
+
+
+3. Per desinstal·lar-lo haurem de executar la següent comanda "dpkg -P pacman", per comprovar que ha funcionat intentem executar el programa.   
+![deb](./fotos/deb3.png)
+
+###Repositoris
+Els repositoris són llocs d’on el sistema descarrega i actualitza el programari de forma segura i automàtica. Hi ha repositoris oficials, PPAs (creats per altres usuaris) i també de tercers.
+
+1. Per instal·lar un programa en repositori, escollirem com exemple Google Chrome. El primer pas és descarregar i instal·lar la clau. Seguidament instal·larem el repositori i després el chrome.
+![rep](./fotos/rep1.png)
+
+2. Per últim, revisarem que tenim el repositori a la carpeta de repositoris i mirarem que el programa estigui instal·lat.
+![rep](./fotos/rep2.png)
+![rep](./fotos/rep3.png)
+
+###Compilar a traves de codi font
+Compilar programari significa convertir el codi font d’un programa en un executable. És útil quan vols versions personalitzades o quan el programa no està als repositoris, ja que pots controlar les opcions d'instal·lació.
+
+1. Per començar, descarregarem el fitxer tar.gz de myman (un programa paregut al videojoc pacman), i el descomprimirem. 
+![tar](./fotos/tar1.png)
+
+2. Tot seguit, entrarem dins de la carpeta i visualitzarem el contigut. 
+![tar](./fotos/tar2.png)
+
+3. Després en "sudo" executarem la comanda "./configure".
+![tar](./fotos/tar3.png)
+
+4. A continuació, instal·larem el paquet build-essential i verificarem la versió del "gcc". Aquest pas és important, ja que, sinó salten errors a les següents comandes.  
+![tar](./fotos/tar4.png)
+![tar](./fotos/tar5.png)
+
+5. Seguidament, en "sudo" executarem les següents comandes.
+![tar](./fotos/tar6.png)![tar](./fotos/tar7.png)
+
+6. Una vegada instal·lat executarem el programa amb "myman"
+![tar](./fotos/tar8.png)
+![tar](./fotos/tar9.png)
+![tar](./fotos/tar10.png)
+
+7. Per últim, eliminarem el programa i ho comprovarem.
+![tar](./fotos/tar11.png)
+![tar](./fotos/tar12.png)
+
+
+
 ##Gestor de arrancada
 
 El gestor d'arrencada és el programa que permet que l'ordinador engegui el sistema operatiu, com Ubuntu, i el més utilitzat és GRUB2, que et deixa escollir entre diferents sistemes si n'hi ha més d'un instal·lat. Per organitzar l'espai del disc dur, existeixen dues opcions: MBR, que és antic i només funciona amb discos de fins a 2 TB, i GPT, que és més modern, admet discos més grans i és més segur. Si apareix l'error "Gestor d'arrencada pendent", vol dir que el sistema no sap com arrencar, però es pot solucionar reinstal·lant el gestor amb un USB o CD.
