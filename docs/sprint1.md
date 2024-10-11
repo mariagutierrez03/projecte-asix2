@@ -192,6 +192,7 @@ El centre de programari és una aplicació gràfica, com una botiga d’apps, qu
 ![ubuntusoftware](./fotos/ubuntusoftware2.png)
 
 ###APT
+APT és una eina que et permet instal·lar i eliminar programes des de la línia de comandes. És com el centre de programari, però en format text, on pots buscar, posar i treure aplicacions escrivint unes poques instruccions.
 
 1. Primer haurem de actualitzar el repositori de paquets.   
 ![apt](./fotos/apt1.png)
