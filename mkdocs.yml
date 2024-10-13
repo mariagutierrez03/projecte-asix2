@@ -1,4 +1,4 @@
-site_name: MkDocs Implantació de Sistemes Operatius
+site_name: MkDocs Maria Gutierrez
 site_url: https://james-willett.github.io/mkdocs-material-youtube-tutorial/
 theme:
   name: material
@@ -12,28 +12,24 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    - content.code.download
   language: en
   palette:
     - scheme: default
       toggle:
         icon: material/toggle-switch-off-outline 
         name: Switch to dark mode
-      primary: teal
+      primary: deep purple
       accent: purple 
     - scheme: slate 
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode    
-      primary: teal
-      accent: lime
+      primary: cyan
+      accent: teal
 
 plugins:
   - search
-
-extra:
-  social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/mariagutierrez03
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -48,15 +44,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-
-extra_css:
-  - docs/extra.css
 
 copyright: |
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <span>&copy; 2024 <a href="https://github.com/mariagutierrez03" target="_blank" rel="noopener">María Gutiérrez</a></span>
-    <img src="./fotos/cc_github.png" alt="Descripción de la imagen" style="width:100px;height:auto; margin-left:900px;">
+    <img src="./fotos/cc_github.png" alt="Descripción de la imagen" style="width:100px;height:auto; margin-left:1060px;">
   </div>
