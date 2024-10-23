@@ -1,9 +1,11 @@
-# Sprint 1 - Implantació de Sistemes Operatius
+# Instal·lació i configuració
+
+Per a la documentació completa visita [mkdocs.org](https://www.mkdocs.org).
 
 ---
 ## Introducció
 
-En aquest primer sprint, començarem amb la instal·lació d'Ubuntu Linux en una màquina virtual, assegurant una configuració adequada per a un ús general. Això inclou la personalització de gestors d'arrencada, la gestió de llicències i la configuració de punts de restauració per a la recuperació del sistema.
+Començarem amb la instal·lació d'Ubuntu Linux en una màquina virtual, assegurant una configuració adequada per a un ús general. Això inclou la personalització de gestors d'arrencada, la gestió de llicències i la configuració de punts de restauració per a la recuperació del sistema.
 
 Després de la instal·lació, configurarem el programari bàsic necessari, com eines de gestió, seguretat i virtualització, i implementarem còpies de seguretat automàtiques. Finalment, es duran a terme proves per garantir el correcte funcionament i es documentarà tot el procés amb captures de pantalla i detalls clau de la configuració.
 
@@ -383,6 +385,22 @@ rar -x fitxer.rar
 ![tar](./fotos/tar11.png)
 ![tar](./fotos/tar12.png)
 
+### Pinning packet
+El pinning de paquets és una tècnica que permet controlar quina versió d'un paquet es vol instal·lar o actualitzar en un sistema operatiu. Aquesta estratègia és útil per mantenir versions específiques d'aplicacions, evitar actualitzacions no desitjades i gestionar la compatibilitat amb altres programes.
+
+---
+1. 
+
+2. 
+
+3. 
+
+4. 
+
+5. 
+
+6. 
+
 
 ---
 ## Gestor de arrancada
@@ -441,16 +459,6 @@ Super Grub2 Disk és una altra eina que et permet arrencar el teu sistema operat
 ![rfoto](./fotos/r8.png)
 
 ---
-## Conclusió
-
-En resum, aquest primer sprint del projecte 1 ha estat molt interessant, perquè hem après conceptes bàsics però essencials per treballar amb Linux. Hem començat instal·lant la nova versió 24.04 d'Ubuntu, que ens ha permès veure les novetats i els avantatges d’aquesta actualització, i hem après a crear punts de restauració per poder recuperar el sistema en cas de problemes.
-
-També hem parlat sobre les llicències de programari, un tema important per entendre com es pot utilitzar i distribuir el programari. A més, hem vist diferents configuracions de xarxa a VirtualBox, com NAT, Adaptador Pont i Xarxa Interna, que ens han ajudat a entendre millor com es poden connectar les màquines virtuals a internet i entre elles.
-
-Finalment, hem treballat amb gestors d'arrencada, com GRUB, per aprendre com funciona el procés d’inici del sistema i poder gestionar diferents sistemes operatius. Tots aquests temes ens han donat una bona base per continuar avançant amb confiança en els pròxims sprints i ens preparen per a situacions reals en les quals haurem d'aplicar aquests coneixements. 
-
-
----
 ## Webgrafia
 
 Molta de la informació extreta està al **Moodle de 0369 - Implantació de Sistemes Operatius**. Seguidament, els següents links són d'internet:
@@ -476,4 +484,6 @@ Free Software Foundation. GNU GRUB Manual. Disponible a: <https://www.gnu.org/so
 Aaron Kili. How to Install and Use Grub Customizer in Ubuntu. Tecmint. Disponible a: <https://www.tecmint.com/install-grub-customizer-in-ubuntu/>
 
 ---
+[![Creative Commons](./fotos/cc_github.png){: style="width:100px; height:auto;"}](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
+
 
