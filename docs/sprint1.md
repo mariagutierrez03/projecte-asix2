@@ -389,17 +389,66 @@ rar -x fitxer.rar
 El pinning de paquets és una tècnica que permet controlar quina versió d'un paquet es vol instal·lar o actualitzar en un sistema operatiu. Aquesta estratègia és útil per mantenir versions específiques d'aplicacions, evitar actualitzacions no desitjades i gestionar la compatibilitat amb altres programes.
 
 ---
-1. 
+1. El primer pas és ficar permissos de **sudo** amb la comanda **sudo su**.
+![pinning pakcet](./fotos/pi1.png)
 
-2. 
+2. Seguidament, entrarem dins de la pagina web <https://www.smplayer.info/es/download-linux> i executarem la primera comanda, aquesta és per afegir el repositori.
+```
+add-apt-repository ppa:rvm/smplayer
+```
+![pinning pakcet](./fotos/pi2.png)
+![pinning pakcet](./fotos/pi3.png)
 
-3. 
+3. Després ficarem la següent comanda de la pàgina mencionada en el punt anterior, aquesta serveix per actualitzar.
+```
+apt-get update
+```
+![pinning pakcet](./fotos/pi4.png)
+![pinning pakcet](./fotos/pi5.png)
 
-4. 
+4. Una vegada feta la actualització si executem la comanda `apt-cache policy smplayer`, per poder veure la versió del candidat. El candidat determina quina serà la versió que s'instal·arà si el programa s'instal·la.
+```
+apt-cache policy smplayer
+```
+![pinning pakcet](./fotos/pi6.png)
 
-5. 
+5. Seguidament, entrarem dins de la carpeta **preferences.d** i crearem un fitxer, per poder canviar la versió del candidat.
+```
+cd /etc/apt/preferences.d
+```
+```
+nano apt_preferences
+```
+![pinning pakcet](./fotos/pi7.png)
 
-6. 
+6. Dins del fitxer haurem d'escriure les següents linies. La primera determina el nom del programa, en aquest cas **smplayer**, la segona que no volem que s'instal·li la última versió dinsponible i la tercera la prioritat.
+```
+Package: smplayer
+Pin: release o=LP-PPA-rvm-smplayer
+Pin-Priority: 400
+```
+![pinning pakcet](./fotos/pi8.png)
+
+7. Després guardarem el fitxer i actualitzarem, de forma que quan tornessim a comprovar la versió s'ens haurà actualitzat el candidat a una versió anterior.
+```
+apt-get update
+```
+```
+apt-cache policy smplayer
+```
+![pinning pakcet](./fotos/pi10.png)
+![pinning pakcet](./fotos/pi9.png)
+
+8. Seguidament, instal·larem el programa smplayer.
+```
+apt-get install smplayer
+```
+![pinning pakcet](./fotos/pi11.png)
+
+9. Per últim podrem comprovar que la versió instal·lada i el candidat son iguals, d'aquesta forma és com es fan els pinning packets.    
+![pinning pakcet](./fotos/pi12.png)
+
+
 
 
 ---
@@ -484,6 +533,5 @@ Free Software Foundation. GNU GRUB Manual. Disponible a: <https://www.gnu.org/so
 Aaron Kili. How to Install and Use Grub Customizer in Ubuntu. Tecmint. Disponible a: <https://www.tecmint.com/install-grub-customizer-in-ubuntu/>
 
 ---
-[![Creative Commons](./fotos/cc_github.png){: style="width:100px; height:auto;"}](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
 
 

@@ -9,4 +9,3 @@ Benvinguts al meu projecte de documentació, creat amb MkDocs! Em dic Maria Guti
 
 ![intro](./fotos/intro.jpg)
 
-[![Creative Commons](./fotos/cc_github.png){: style="width:100px; height:auto;"}](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
