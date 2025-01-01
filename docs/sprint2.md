@@ -344,7 +344,7 @@ pwd
 ![useradd](./fotos/s9.png)
 
 
-2. Per fer el inici de sessió des de la interfície gràfica, haurem de sortir de la sessió actual i entrar en l'usuari correcte, de forma habitual introduint la contrasenya.
+2. Per fer el inici de sessió des de la interfície gràfica, haurem de sortir de la sessió actual i entrar en l'usuari correcte, de forma habitual introduint la contrasenya.        
 ![useradd](./fotos/s10.png)
 ![useradd](./fotos/s11.png)
 
