@@ -1595,9 +1595,358 @@ sudo smbclient -L //192.168.1.155
 ---
 ## Còpia de seguretat i automatització de tasques
 
+Avui dia, fer còpies de seguretat és imprescindible per protegir les nostres dades davant possibles problemes com errors humans, fallades del sistema o atacs informàtics. A més, automatitzar aquestes tasques ens permet estalviar temps i assegurar que no ens oblidem de fer-les regularment.
+
+Hi ha diferents tipus de còpies de seguretat, cadascun amb els seus punts forts i febles. A continuació, es presenta una taula comparativa: 
+
+| Tipus de còpia       | Descripció                                                                                 | Avantatges                                                | Inconvenients                                             |
+|-----------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------|
+| **Completa**          | Es copia la totalitat de les dades seleccionades, independentment de si han canviat o no. | Simplifica la recuperació, ja que només cal una còpia i ofereix una instantània completa del sistema.   | Requereix molt espai d'emmagatzematge i temps de creació més llarg.                |
+| **Diferencial**       | Es copia només les dades que han canviat des de l'última còpia completa.                  | Més ràpida de crear que una còpia completa i recuperació més ràpida que amb còpies incrementals.             | L'espai necessari creix amb el temps des de la completa i més lenta i menys eficient que les còpies incrementals. |
+| **Incremental**       | Es copia només les dades que han canviat des de l'última còpia (completa o incremental).  | Estalvia espai d'emmagatzematge i temps de còpia molt reduït.                        | Recuperació més complexa i lenta (requereix totes les còpies) i risc més elevat si alguna còpia intermèdia falla.
 
 ---
 
+### Comandes backups
+
+Quan es tracta de fer còpies de seguretat o gestionar dades, tenim a la nostra disposició diverses eines que s’adapten a diferents necessitats. Algunes són més senzilles i ràpides d’utilitzar, mentre que altres ofereixen funcionalitats avançades per optimitzar recursos o treballar amb màquines remotes.
+
+A continuació, es presenta una taula amb les principals eines de còpies de seguretat. S’hi detallen les seves característiques, els casos d’ús més comuns, i els seus avantatges i inconvenients.
+
+| Eina       | Descripció                                                                                             | Ús principal                                         | Avantatges                                                                 | Inconvenients                                                             |
+|------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **cp**     | Còpia simple, no intel·ligent. Només s’utilitza en entorns locals.                                     | Transferir fitxers localment.                       | Simple d’utilitzar i disponible en tots els sistemes Unix-like.                                                     | No optimitza el temps ni l’espai i no detecta fitxers ja copiats, duplicant feina.                                       |
+| **rsync**  | Eina intel·ligent que només copia els fitxers modificats. S’utilitza sovint en màquines remotes via SSH. | Sincronització de fitxers locals o remots.          | Només copia els canvis, estalviant temps i espai i suporta compressió i verificació remota.                       | Configuració inicial més complexa i pot ser menys intuïtiu per a usuaris sense experiència.                                     |
+| **dd**     | Realitza una clonació sector a sector. No està dissenyat per a còpies de seguretat d’arxius. També s’utilitza per sobreescriure dades. | Clonar discos, particions o sobreescriure dades.    | Pot copiar sistemes de fitxers complets o dispositius físics.           | No és intel·ligent (còpia tots els sectors, ocupats o no).              |
+
+--- 
+
+#### Preparació del entorn
+
+1. El primer que farem és afegir dos discos a la maquina virtual i comprovar que estan.
+![comandes](./fotos/c1.png)
+
+2. Seguidament, els crearem una partició general i els formatarem.
+![comandes](./fotos/c2.png)
+
+3. Tot seguit, en el directori Documents crearem una carpeta anomenada 'prova' i un fitxer anomenat 'prova2'. Després anirem a /var i crearem un carpeta anomenada 'copies', aquí dins montarem la particio sdb1. Una vegada fet comprovarem el resultat amb `df -T`. 
+```
+cd Documents/
+```
+```
+mkdir prova
+```
+```
+touch prova2
+```
+```
+cd /var/
+```
+```
+mkdir copies
+```
+```
+mount -t ext4 /dev/sdb1 /var/copies
+```
+```
+df -T
+```
+![comandes](./fotos/c3.png)
+
+---
+
+#### CP 
+
+A continuació per poder fer usar la comanda `cp` haurem de escriure 'cp', '-R' si volem copiar tot el contingut, la ruta de la carpeta de la qual és vol fer la copia i seguidament la ruta del destí. Per comprovar el resultat visualitzarem la ruta de destí amb `ls`. A més si creem un nou fitxer a l'origen i després li esborrem un fitxer o carpeta, podrem comprovar que si tornem a fer la comanda `cp` i visualitzem el destí s'ha agregat l'arxiu nou, però no s'ha eliminat el que hem esborrat a l'origen.
+```
+cp -R /home/maria/Documents/* /var/copies/
+```
+```
+ls /var/copies/
+```
+```
+touch /home/maria/Documents/fitxer
+```
+```
+rm -r /home/maria/Documents/prova
+```
+```
+cp -R /home/maria/Documents/* /var/copies/
+```
+```
+ls /var/copies/
+```
+![comandes](./fotos/c4.png)
+
+---
+
+#### RSYNC
+
+Per fer ús de `rsync` primer crearem un archiu anomenat fitxer2 i una carpeta. Seguidament eliminarem la carpeta creada i iniciarem la comanda de `rsync`. Com podem comprovar ara els dos directoris tenen el mateix contigut, ja que rsync és intel·ligent i si detecta que algun fitxer o carpeta han sigut eliminats també els elimina a l'altre costat. 
+```
+cd Documents/
+```
+```
+ls
+```
+```
+touch fitxer2
+```
+```
+mkdir carpeta
+```
+```
+ls
+```
+```
+ls /var/copies/
+```
+```
+rm -r carpeta/
+```
+```
+ls
+```
+```
+ls /var/copies
+```
+```
+rsync -av --delete /home/maria/Documents/ /var/copies/
+```
+```
+ls
+```
+```
+ls /var/copies/
+```
+![comandes](./fotos/c5.png)
+![comandes](./fotos/c6.png)
+![comandes](./fotos/c7.png)
+
+---
+
+#### DD
+
+En aquest cas prepararem l'escenari creant un nou directori a /var anomenat 'clonacio' i aqui muntarem la particio sdc1. Després executarem la comanda `dd` en la que 'if' és l'origen i 'of' és el destí, bs indica la mida en la que és copia la informació i status és per poder visualitzar el procés. Com podem comprovar quan hem executat la comanda hem indicat `bs=4M`, quan comprovem els hashos per comprovar que la clonacio ha sigut exacta detectem que no, ja que són diferents. El problema resideix en la mida, ja que, si li canviem a `bs=1M` i comprovem el hashos ara si son iguals. 
+```
+cd /var/
+```
+```
+mkdir clonacio
+```
+```
+mount -t ext4 /dev/sdc1 /var/clonacio
+```
+```
+dd if=/dev/sdb1 of=/dev/sdc1 bs=1M status=progress
+```
+```
+md5sum /dev/sdb1 /dev/sdc1
+```
+![comandes](./fotos/c8.png)
+![comandes](./fotos/c9.png)
+![comandes](./fotos/c10.png)
+![comandes](./fotos/c11.png)
+
+---
+
+### Programes
+
+Les còpies de seguretat són essencials per protegir els nostres fitxers i garantir que no perdem dades importants. En aquest apartat, parlarem de dues eines destacades per gestionar còpies de seguretat en sistemes Ubuntu: Duplicity i Deja Dup. Ambdues ofereixen opcions pràctiques i eficients, adaptades a diferents necessitats, ja sigui per a usuaris avançats o per a aquells que busquen una solució senzilla i intuïtiva. A continuació, explico com funcionen aquestes eines i quins avantatges ens ofereixen.
+
+---
+
+#### Deja-dup
+
+Deja Dup és una eina que ens permet fer còpies de seguretat de manera fàcil i sense complicacions. Amb una interfície clara, podem programar còpies automàtiques, guardar els nostres fitxers al núvol o en altres ubicacions, i protegir-los amb xifratge per garantir la nostra privadesa. És ideal per assegurar les nostres dades en Ubuntu sense haver de preocupar-nos per configuracions tècniques.
+
+1. El primer que haurem de fer és instal·lar el programa.
+```
+sudo apt install deja-dup
+```
+![deja-dup](./fotos/deja1.png)
+
+2. Seguidament, inciarem el programa i clicarem en crear una primera backup.        
+![deja-dup](./fotos/deja2.png)
+
+3. Tot seguit, escollirem les carpetes les quals volem fer la còpia de seguretat i les que no ens interessa, com per exemple la paperera i baixades.        
+![deja-dup](./fotos/deja3.png)
+
+4. A més també podrem escollir multiples opcions con a destí de la backup, com per exemple Google Drive, Microsoft OneDrive, un servidor de xarxa o inclus una carpeta local. En aquest cas realitzarem la prova amb una carpeta local anomenada "backupmaria".     
+![deja-dup](./fotos/deja4.png)
+![deja-dup](./fotos/deja5.png)
+
+5. A continuació, introduirem una contrasenya, encara que aquest pas és opcional.       
+![deja-dup](./fotos/deja6.png)
+
+6. Quan acabi de fer la copia de seguretat tornarem al menú incial, deja-dup proporciona diferents opcions com per exmeple fer les copies de seguretat cada cert temps.     
+![deja-dup](./fotos/deja7.png)
+
+7. Si anem a la segona pestanya podrem seleccionar una de les carpetes de les que hem fet la backup i restaurar-la. En aquest cas ho farem amb Escriptori, per tant crearem una carpeta de prova dins del directori i després procedirem amb la restauració.        
+![deja-dup](./fotos/deja8.png)
+![deja-dup](./fotos/deja9.png)
+![deja-dup](./fotos/deja10.png)
+
+8. Tot seguit, crearem una carpeta nova on restaurar el directori.
+![deja-dup](./fotos/deja11.png)
+![deja-dup](./fotos/deja12.png)
+
+9. Finalment, comporvarem que les carpetes existeixen. 
+![deja-dup](./fotos/deja13.png)
+
+---
+
+#### Duplicity
+
+Duplicity és una eina que ens permet fer còpies de seguretat de manera fàcil i eficient. Podem guardar només els canvis des de l'últim backup, cosa que ens ajuda a estalviar espai, i també podem xifrar les dades per protegir-les. A més, tenim la possibilitat d'emmagatzemar les còpies al nostre ordinador, en servidors o al núvol, ideal per mantenir els nostres fitxers segurs en sistemes com Ubuntu.
+
+1. El primer pas és instal·lar duplicity, normalment ja està instal·lat.
+```
+sudo apt install duplicity
+```
+![duplicity](./fotos/d1.png)
+
+2. Després crearem una carpeta on allotjarem les copies de seguretat.
+```
+mkdir /home/maria/Backups
+```
+![duplicity](./fotos/d2.png)
+
+3. Seguidament, introduirem la comanda per fer la backup, en l'estructura de la comanda `duplicity` primer s'indica la ruta d'origen i després la de destí.
+```
+duplicity /home/maria/Documents/ file:///home/maria/Backups/BackupsDocuments
+```
+![duplicity](./fotos/d3.png)
+
+4. Per últim, comprovarem que s'ha realitzat correctament.  
+```
+ls /home/maria/Backups
+```
+```
+ls /home/maria/Backups/BackupDocuments/
+```
+![duplicity](./fotos/d4.png)
+
+
+---
+
+### Automatització amb script, cron i anacron
+
+L’automatització de tasques és una part essencial de l’administració de sistemes operatius com Ubuntu. Mitjançant eines com **scripts**, **cron** i **anacron**, podem programar l’execució de tasques de manera regular, eficient i adaptada a les necessitats específiques del sistema.  
+
+#### Teoria: cron i anacron  
+**cron** i **anacron** són eines d’automatització que permeten executar tasques periòdiques en un sistema Ubuntu. Tot i que abans funcionaven separadament, ara estan integrades i col·laboren per oferir més flexibilitat.  
+
+- **cron**: Executa tasques programades en una data i hora específiques, sempre que el sistema estigui encès.  
+- **anacron**: És ideal per executar tasques periòdiques encara que el sistema hagi estat apagat o desconnectat en el moment de l’execució prevista.  
+
+#### Diferències entre cron i anacron  
+| Aspecte                | **cron**                                                                                          | **anacron**                                                                                       |
+|------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Execució**           | Només funciona quan el sistema està en funcionament.                                              | Les tasques es poden executar encara que el sistema hagi estat apagat durant el moment previst.  |
+| **Freqüència**         | Adequat per a tasques amb horaris específics i definits (diari, setmanal, mensual, etc.).          | Dissenyat per a tasques generals de manteniment i neteja periòdiques.                           |
+| **Usuaris**            | Normalment associat a tasques programades per un usuari específic.                                | Les tasques solen ser més generals i administratives.                                           |
+| **Precisió**           | Executa tasques exactament en la data i hora configurades.                                        | Recupera tasques perdudes, però no les executa exactament en el moment originalment planificat. |
+
+
+#### Quan utilitzar cron o anacron?  
+- **cron**: Ideal per programar tasques que necessiten executar-se a una hora i data concretes, especialment per accions específiques d’un usuari (p. ex., fer una còpia de seguretat a les 22:00 cada dia).  
+- **anacron**: Recomanat per a tasques que no requereixen precisió horària però que són essencials per al manteniment del sistema, com ara netejar fitxers temporals o actualitzar registres. És especialment útil en sistemes que poden estar apagats durant períodes de temps.  
+
+
+---
+
+#### CRON 
+
+Utilitzem l’arxiu /etc/crontab quan volem executar alguna cosa globalment per a tots el usuaris. Quan interessa un usuari específic executarem la comanda “crontab -e -u usuari”. Dintre del directori /etc/ tenim unes carpetes predeterminades per al cron per ficar scripts que volem que s’executem diàriament, mensualment, anualment. 
+
+1. Dins del directori /etc/ si filtrem per el nom de "cron" podrem observar que hi ha per hora, per dia, per setmana, per mes i per any.
+```
+cd /etc/
+```
+```
+ls | grep cron 
+```
+![cron](./fotos/cron1.png)
+
+2. A continuació, entrarem dins de /home/maria i crearem un script anomenat "copia.sh". A més crearem un carpeta anomenada prova per a que el director Imatges tingui una mica més de contingut.
+```
+cd /home/maria/
+```
+```
+nano copies.sh
+```
+![cron](./fotos/1cron.png)
+![cron](./fotos/2cron.png)
+
+3. Aquest script crea una còpia de seguretat comprimida de la carpeta "Imatges" del teu usuari i guarda el fitxer al "Escriptori" amb un nom que inclou la data i l’hora per identificar cada còpia. Utilitza la comanda tar per empaquetar els fitxers i genera un arxiu comprimit amb el format .tar.gz. A més, es pot programar perquè s'executi automàticament amb cron, indicant l’hora i la freqüència d’execució, com per exemple fer una còpia cada dia o cada setmana. Molt convenient per tenir les teves dades segures sense haver de fer-ho manualment.
+```
+#!/bin/bash
+# Crear una còpia de seguretat de la carpeta Imatges
+
+# Generar un timestamp amb la data i hora actual
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+
+# Crear la còpia de seguretat comprimida
+tar -cvf "/home/maria/Escriptori/copies_$TIMESTAMP.tar.gz" "/home/maria/Imatges"
+```
+![cron](./fotos/3cron.png)
+
+4. Després afegirem permissos de execució a l'script i farem un `ls`per comprovar que estan aplicats. 
+```
+chmod +x copies.sh
+```
+```
+ls -la
+```
+![cron](./fotos/4cron.png)
+![cron](./fotos/5cron.png)
+
+5. Tot seguit, modificarem el fitxer /etc/crontab. Aquí afegirem una nova linia abaix del document, aquesta programa que l'script copies.sh serà executat per l'usuari maria el 15 de gener a les 10:26 del matí, independentment del dia de la setmana.
+```
+nano /etc/crontab
+```
+![cron](./fotos/6cron.png)
+![cron](./fotos/7cron.png)
+
+6. A continuació, ens esperarem fins les 10:26 i veurem com de cop apareix un fitxer comprimit el qual conté el contigut de la carpeta "Imatges".       
+![cron](./fotos/8cron.png)
+![cron](./fotos/10cron.png)
+
+7. Seguidament, tornarem al fitxer i comentarem la linia.
+![cron](./fotos/11cron.png)
+
+8. Ara entrarem dins del directori /etc/cron.daily/, copiarem l'script de copies dins i li treurem ".sh" ja que si el deixem no funcionarà.
+```
+cd /etc/cron.daily/
+```
+![cron](./fotos/12cron.png)
+![cron](./fotos/13cron.png)
+![cron](./fotos/14cron.png)
+
+9. Tot seguit, editarem el fitxer /var/spool/anacron/cron.daily, en el que eliminarem la informació i el guardarem.
+```
+nano /var/spool/anacron/cron.daily
+```
+![cron](./fotos/15cron.png)
+![cron](./fotos/16cron.png)
+
+10. Seguidament, editarem el fitxer /etc/anacrontab i editarem que s'execute en 1 minut en comptes de 5. 
+```
+nano /etc/anacrontab
+```
+![cron](./fotos/17cron.png)
+![cron](./fotos/18cron.png)
+![cron](./fotos/19cron.png)
+
+11. Després, reniciarem i una vegada encesa la màquina en apareixerà el comprimit automaticament, a més si revisem el fitxer /var/spool/anacron/cron.daily la data s'ha actualitzat.
+![cron](./fotos/20cron.png)
+![cron](./fotos/21cron.png)
+![cron](./fotos/22cron.png)
+
+
+
+---
 
 ## Quotes de disc
 Les quotes de disc a Ubuntu són una eina que permet limitar la quantitat d'espai en disc que pot utilitzar cada usuari o grup al sistema. Això és útil per evitar que un usuari ocupi tot l’espai disponible i per gestionar millor els recursos en entorns compartits, com servidors o ordinadors multiusuari. Les quotes es poden configurar per definir límits tant en la quantitat de fitxers com en la mida total que es pot emmagatzemar, assegurant un ús més equilibrat i controlat de l'espai disponible.
