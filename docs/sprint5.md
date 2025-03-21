@@ -313,11 +313,6 @@ lynis -Q
 
 ---
 
-## Instal·lacions desateses
-
-
----
-
 ## Servidor d'actualitzacions
 
 Un servidor d’actualitzacions és un sistema que s’encarrega d’instal·lar i actualitzar programes en diversos ordinadors des d’un sol lloc. Això fa que tot sigui més ràpid, fàcil i segur, sense haver d’actualitzar cada ordinador per separat.
