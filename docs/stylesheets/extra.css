@@ -1,6 +1,6 @@
 /* Solo imágenes del contenido principal de los archivos Markdown */
 main .md-typeset img {
-    display: block; /* centrado */
+    display: right;
     margin-left: auto;
     margin-right: auto;
     border: 3px solid var(--md-primary-fg-color); /* usa la variable del tema */
