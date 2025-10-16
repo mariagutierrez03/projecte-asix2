@@ -23,15 +23,27 @@ cat /etc/group | grep sudo* && cat /etc/group | grep cryp*
 ```
 ![foto](fotos/sistemes2.png)
 
-3. Tot seguit, vaig instal·lar el paquet gocryptfs. Aquest és important per encriptar les dades.    
+3. Tot seguit, vaig instal·lar el paquet gocryptfs. Aquest és important per encriptar les dades.
+```bash
+sudo apt update && sudo apt install -y gocryptfs
+```
 ![foto](fotos/sistemes4.png)
 ![foto](fotos/sistemes5.png)
 
-4. A l'usuari hacker vaig crear dues carpetes. La primera "dades_originals_backup" té la funció de fer una copia de les dades del usuari "maria". Les demés tenen la funció de guardar les dades de "maria" encriptades.    
+5. A l'usuari hacker vaig crear dues carpetes. La primera "dades_originals_backup" té la funció de fer una copia de les dades del usuari "maria". Les demés tenen la funció de guardar les dades de "maria" encriptades.    
+```bash
+sudo chown -R hacker:cryptshare /home/hacker
+```
+```bash
+mkdir dades_originals_backup && sudo chown hacker:cryptshare dades_originals_backup && sudo chmod 770 dades_originals_backup
+```
 ![foto](fotos/sistemes6.png)
 ![foto](fotos/sistemes7.png)
 
-5. A continuació, crearem fitxers en multiples carpetes dins de l'usuari "maria". A més de canviar grup propietari a cryptshare i permisos 770.    
+6. A continuació, crearem fitxers en multiples carpetes dins de l'usuari "maria". A més de canviar grup propietari a cryptshare i permisos 770.
+```bash
+ls -l
+```
 ![foto](fotos/docs1.png)
 ![foto](fotos/docs2.png)
 
@@ -42,7 +54,15 @@ cat /etc/group | grep sudo* && cat /etc/group | grep cryp*
 1. El primer que vaig de fer és crear el arxiu a el directori /etc/systemd/system/.    
 ![foto](fotos/target1.png)
 
-2. Aquí dins el que havia de fer és escriure les següent linies, que són molt paregudes a les del arxiu 'multi-user.target'.    
+2. Aquí dins el que havia de fer és escriure les següent linies, que són molt paregudes a les del arxiu 'multi-user.target'.
+```bash
+[Unit]
+Description=Punt de sincronització per a les carpetes xifrades de l'usuari Maria
+Requires=multi-user.target graphical.target
+After=multi-user.target graphical.target
+# Permet utilitzar 'systemctl isolate maria-docs.target'
+AllowIsolate=yes
+```
 ![foto](fotos/target2.png)
 
 ---
@@ -78,9 +98,32 @@ cat /etc/group | grep sudo* && cat /etc/group | grep cryp*
 ![foto](fotos/service0.png)
 
 2. Una vegada dins és molt important configurar que funcioni a partir del target que havia creat prèviament. A més de la ruta al script, per a que l'executi.    
+```bash
+[Unit]
+Description=Muntar carpetes xifrades de l'usuari Maria
+After=network.target multi-user.target
+PartOf=maria-docs.target
+
+[Service]
+Type=oneshot
+User=maria
+Environment=HOME=/home/maria
+ExecStart=/usr/local/bin/mount_encrypted.sh
+ExecStop=/usr/bin/fusermount -u /home/maria/documents-desxifrats
+RemainAfterExit=yes
+```
 ![foto](fotos/service1.png)
 
 3. Per últim, haurem d'actualitzar el sistema, habilitar el service i fer un start del target.    
+```bash
+sudo systemctl daemon-reload
+```
+```bash
+sudo systemctl set-default maria-docs.target
+```
+```bash
+sudo systemctl start mount-docs.service
+```
 ![foto](fotos/service2.png)
 ![foto](fotos/service3.png)
 ![foto](fotos/service4.png)
@@ -90,12 +133,21 @@ cat /etc/group | grep sudo* && cat /etc/group | grep cryp*
 ## Part 5 - Resultats
 
 1. Una vegada ja hem reiniciat el sistema podrem observar que dins de cada carpeta del usuari maria les dades estan encriptades.    
+```bash
+ls -l Baixades
+```
 ![foto](fotos/resul2.png)
 
 2. Seguidament, si entrem en l'usuari hacker, podrem observa que a la carpeta dades_originals_backup estan totes les dades en clar del usuari maria.     
+```bash
+ls -l dades_originals_backup/
+```
 ![foto](fotos/resul3.png)
 
-3. Per últim si observem els directoris *_encrypted podrem veure que les dades son exactament igual a les que estan actualment a maria, per tant la integritat de les dades encriptades es manté.        
+3. Per últim si observem els directoris *_encrypted podrem veure que les dades son exactament igual a les que estan actualment a maria, per tant la integritat de les dades encriptades es manté.
+```bash
+ls -l Baixades_encrypted/
+```
 ![foto](fotos/resul1.png)
 
 ---
