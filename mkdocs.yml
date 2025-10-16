@@ -17,16 +17,16 @@ theme:
   palette:
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline 
+        icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: deep purple
-      accent: purple 
-    - scheme: slate 
+      primary: "#FFC0CB"
+      accent: "#FFB6C1"
+    - scheme: slate
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode    
-      primary: cyan
-      accent: teal
+        name: Switch to light mode
+      primary: "#FFC0CB"
+      accent: "#FFB6C1"
 
 plugins:
   - search
