@@ -6,3 +6,25 @@ img {
     max-width: 200px; /* Tamaño máximo de la imagen */
     width: 60%; /* Asegura que se ajuste al contenedor */
 }
+
+/* Paleta para el esquema por defecto */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #FFC0CB; /* rosa principal */
+  --md-primary-fg-color--light: #FFD6DD; /* versión clara */
+  --md-primary-fg-color--dark:  #FF99AA; /* versión oscura */
+
+  --md-accent-fg-color:         #FFB6C1; /* accent rosa */
+  --md-accent-fg-color--light:  #FFD1DC;
+  --md-accent-fg-color--dark:   #FF85A2;
+}
+
+/* Paleta para el esquema slate (opcional) */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #FFC0CB;
+  --md-primary-fg-color--light: #FFD6DD;
+  --md-primary-fg-color--dark:  #FF99AA;
+
+  --md-accent-fg-color:         #FFB6C1;
+  --md-accent-fg-color--light:  #FFD1DC;
+  --md-accent-fg-color--dark:   #FF85A2;
+}
