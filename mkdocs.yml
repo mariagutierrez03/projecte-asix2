@@ -19,14 +19,14 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: "#FFC0CB"
-      accent: "#FFB6C1"
+      primary: pink   # rosa pastel (Material color)
+      accent: pink    # accent també rosa
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-      primary: "#FFC0CB"
-      accent: "#FFB6C1"
+      primary: pink
+      accent: pink
 
 plugins:
   - search
