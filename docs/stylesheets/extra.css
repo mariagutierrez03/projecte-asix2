@@ -1,10 +1,11 @@
+/* Solo imágenes del contenido principal de los archivos Markdown */
 main .md-typeset img {
-    display: right;
-    margin-left: auto;
-    margin-right: auto;
-    border: 3px solid var(--md-primary-fg-color);
-    width: 60%; /* se adapta al contenedor */
-    max-width: 100%; /* nunca se sale del ancho del contenedor */
+    display: block;                 /* mantiene la imagen como bloque */
+    margin-left: 0;                 /* alineada a la izquierda */
+    margin-right: auto;             /* empuja el resto hacia la derecha */
+    border: 3px solid var(--md-primary-fg-color); /* borde rosa pastel */
+    width: 60%;                     /* ocupa el 60% del contenedor */
+    max-width: 100%;                /* nunca excede el ancho del contenedor */
 }
 
 /* Paleta para el esquema por defecto */
