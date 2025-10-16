@@ -1,10 +1,11 @@
-img {
-    display: right;
+/* Solo imágenes del contenido principal de los archivos Markdown */
+main .md-typeset img {
+    display: block; /* centrado */
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid purple;
-    max-width: 200px;
-    width: 60%;
+    border: 3px solid var(--md-primary-fg-color); /* usa la variable del tema */
+    max-width: 200px; 
+    width: 60%; 
 }
 
 /* Paleta para el esquema por defecto */
@@ -28,3 +29,4 @@ img {
   --md-accent-fg-color--light:  #d97aa8;
   --md-accent-fg-color--dark:   #962f5f;
 }
+
