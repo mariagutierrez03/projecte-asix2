@@ -2,29 +2,29 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid var(--md-primary-fg-color); /* usa el color principal del tema */
+    border: 3px solid #FFD6DD; /* usa el color principal del tema */
     max-width: 200px;
     width: 60%;
 }
 
 /* Paleta para el esquema por defecto */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:        #FF69B4; /* rosa principal más oscuro */
-  --md-primary-fg-color--light: #FF85C1; /* versión clara */
-  --md-primary-fg-color--dark:  #C0507C; /* versión oscura */
+  --md-primary-fg-color:        #FFC0CB; /* rosa principal */
+  --md-primary-fg-color--light: #FFD6DD; /* versión clara */
+  --md-primary-fg-color--dark:  #FF99AA; /* versión oscura */
 
-  --md-accent-fg-color:         #FF5CAD; /* accent rosa */
-  --md-accent-fg-color--light:  #FF7CC1;
-  --md-accent-fg-color--dark:   #C04888;
+  --md-accent-fg-color:         #FFB6C1; /* accent rosa */
+  --md-accent-fg-color--light:  #FFD1DC;
+  --md-accent-fg-color--dark:   #FF85A2;
 }
 
 /* Paleta para el esquema slate (opcional) */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #FF69B4;
-  --md-primary-fg-color--light: #FF85C1;
-  --md-primary-fg-color--dark:  #C0507C;
+  --md-primary-fg-color:        #FFC0CB;
+  --md-primary-fg-color--light: #FFD6DD;
+  --md-primary-fg-color--dark:  #FF99AA;
 
-  --md-accent-fg-color:         #FF5CAD;
-  --md-accent-fg-color--light:  #FF7CC1;
-  --md-accent-fg-color--dark:   #C04888;
+  --md-accent-fg-color:         #FFB6C1;
+  --md-accent-fg-color--light:  #FFD1DC;
+  --md-accent-fg-color--dark:   #FF85A2;
 }
