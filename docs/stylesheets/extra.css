@@ -1,5 +1,5 @@
 main .md-typeset img {
-    display: block;
+    display: right;
     margin-left: auto;
     margin-right: auto;
     border: 3px solid var(--md-primary-fg-color);
