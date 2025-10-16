@@ -1,11 +1,35 @@
-# Implantació de Sistemes Operatius
-
-Per a la documentació completa visita [mkdocs.org](https://www.mkdocs.org).
-
 ---
-## Introducció
+layout: default
+title: "ASIX2 - 0374 - Administració de Sistemes Operatius"
+---
 
-Benvinguts al meu projecte de documentació, creat amb MkDocs! Em dic Maria Gutiérrez i aquest projecte MkDocs està destinat a la matèria d'Implantació de Sistemes Operatius. En aquest lloc, documentaré de manera detallada els diferents sprints i fases del projecte relacionat amb la instal·lació, configuració i manteniment de sistemes operatius. L'objectiu és facilitar el seguiment del procés d'implantació, oferint guies pas a pas i documentació clara que pugui ser útil tant per a mi com per a altres estudiants o professionals de la matèria.
+Aquest repositori conté el material de l'assignatura **ASIX2 - 0374 - Administració de Sistemes Operatius**, impartida a l'**Institut de l'Ebre**.
+
+- Índex i enllaços a les unitats del curs.  
+- Recursos en format PDF i Markdown.  
+- Scripts i exemples pràctics.  
+- Propostes de projectes per a l’avaluació final.
 
 ![intro](./fotos/intro.jpg)
+
+## Llicència
+
+El contingut està sota llicència [Creative Commons BY-NC-SA 3.0 ES](LICENSE.md).
+
+## Contingut del curs
+
+### [Unitat 1. Creació entorn d'arrencada amb systemd Linux](unitat1/unitat1.md)
+
+### [Unitat 2.](unitat2/unitat2.md)
+
+### [Unitat 3.](unitat3/unitat3.md)
+
+### [Unitat 4.](unitat4/unitat4.md)
+
+### [Unitat 5.](unitat5/unitat5.md)
+
+### [Unitat 6.](unitat6/unitat6.md)
+
+### [Unitat 7.](unitat7/unitat7.md)
+
 
