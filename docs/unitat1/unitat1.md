@@ -5,29 +5,23 @@ title: "Unitat 1. Creació entorn d'arrencada amb systemd Linux"
 
 ## Part 1 - Preparar l'entorn
 
-1. El primer que vaig fer va ser afegir l'usuari "hacker".    
-
-  ```bash
-  sudo adduser hacker
-  ```
-
-  ![foto](fotos/sistemes1.png)
+1. El primer que vaig fer va ser afegir l'usuari "hacker".   
+    ```bash
+    sudo adduser hacker
+    ```
+    ![foto](fotos/sistemes1.png)
 
 2. Seguidament, vaig entrar en mode administrador i vaig crear el grup "cryptshare". A més vaig afegir els usuaris "maria" i "hacker" al grup prèviament creat. També és important afegir a l'usuari "hacker" al grup sudo. En acabar comprovo el resultat al fitxer /etc/group.    
-
-  ```bash
-  groupadd cryptshare
-  ```
-  
-  ```bash
-  usermod -aG cryptshare maria && usermod -aG cryptshare hacker && usermod -aG sudo hacker
-  ```
-  
-  ```bash
-  cat /etc/group | grep sudo* && cat /etc/group | grep cryp*
-  ```
-
-  ![foto](fotos/sistemes2.png)
+    ```bash
+    groupadd cryptshare
+    ```
+    ```bash
+    usermod -aG cryptshare maria && usermod -aG cryptshare hacker && usermod -aG sudo hacker
+    ```
+    ```bash
+    cat /etc/group | grep sudo* && cat /etc/group | grep cryp*
+    ```
+    ![foto](fotos/sistemes2.png)
 
 3. Tot seguit, vaig instal·lar el paquet gocryptfs. Aquest és important per encriptar les dades.    
 ![foto](fotos/sistemes4.png)
