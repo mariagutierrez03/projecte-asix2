@@ -11,8 +11,6 @@ En aquest lloc documentaré de manera detallada els diferents continguts del cur
 
 L’objectiu és oferir una guia clara i estructurada per a l’aprenentatge i la pràctica en l’administració de sistemes operatius, facilitant el seguiment del curs i proporcionant recursos útils tant per a mi com per a altres estudiants interessats en aquesta matèria.
 
-![foto](./fotos/banner-mkdocs.png)
-
 ---
 
 ## Contingut del curs
@@ -31,5 +29,6 @@ L’objectiu és oferir una guia clara i estructurada per a l’aprenentatge i l
 
 #### [Unitat 7.](unitat7/unitat7.md)
 
+---
 ---
 
