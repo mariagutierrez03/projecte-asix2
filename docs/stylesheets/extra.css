@@ -3,25 +3,25 @@ main .md-typeset img {
     display: block;                 /* mantiene la imagen como bloque */
     margin-left: 0;                 /* alineada a la izquierda */
     margin-right: auto;             /* empuja el resto hacia la derecha */
-    border: 3px solid var(--md-primary-fg-color); /* borde rosa pastel */
+    border: 3px solid var(--md-primary-fg-color);
     width: 60%;                     /* ocupa el 60% del contenedor */
     max-width: 100%;                /* nunca excede el ancho del contenedor */
 }
 
 /* Paleta para el esquema por defecto (modo claro) */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:        #1C4293;  /* azul oscuro para modo claro */
-  --md-primary-fg-color--light: #4A6BB5; /* versión clara */
-  --md-primary-fg-color--dark:  #122F6B; /* versión oscura */
+  --md-primary-fg-color:        #7B95C5;  /* azul claro para modo claro */
+  --md-primary-fg-color--light: #A0B0D8; /* versión clara */
+  --md-primary-fg-color--dark:  #4E6299; /* versión oscura */
 
-  --md-accent-fg-color:         #1C4293;  /* accent igual que primary */
-  --md-accent-fg-color--light:  #4A6BB5;
-  --md-accent-fg-color--dark:   #122F6B;
+  --md-accent-fg-color:         #7B95C5;  /* accent igual que primary */
+  --md-accent-fg-color--light:  #A0B0D8;
+  --md-accent-fg-color--dark:   #4E6299;
 }
 
 /* Paleta para el esquema slate / modo oscuro */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #325FA9;  /* azul para modo oscuro */
+  --md-primary-fg-color:        #325FA9;  /* azul oscuro para modo oscuro */
   --md-primary-fg-color--light: #5880C1; /* versión clara */
   --md-primary-fg-color--dark:  #1E3D70; /* versión oscura */
 
