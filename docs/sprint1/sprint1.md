@@ -56,6 +56,8 @@ Som tres persones, cadascuna amb un paper clau:
 - **Víctor serà el tècnic:** Ell té el coneixement profund de com funcionen les aplicacions web (les pàgines i els sistemes que usen els clients). Ell s'encarregarà d'intentar explotar les vulnerabilitats més complexes, com les de codi o les bases de dades.  
 - **María serà la responsable d'organització i documentació:** És la persona que posa ordre al caos. Ella s'assegura que seguim els procediments correctes, gestiona el temps i, el més important, escriu l'informe final que li donarem al client, detallant els problemes i les solucions.
 
+!(docs/sprint1/fotos/SCRUM-2.png)
+
 ---
 
 ### Per què Hexon Security triomfarà?
