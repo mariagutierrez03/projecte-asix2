@@ -1,11 +1,7 @@
 ---
 layout: default
-title: "Benvolguts!"
+title: "Benvinguts al nostre espai!"
 ---
-
----
-
-Benvinguts al nostre espai!
 
 Som Hexon Security, una empresa de ciberseguretat creada com a part d’un projecte educatiu. Aquí hem volgut simular com seria treballar en un entorn professional real: muntar la nostra pròpia empresa i fer una auditoria de seguretat (pentesting) a una altra empresa fictícia anomenada GlobalData Solutions (GDS).
 
