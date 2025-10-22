@@ -5,29 +5,17 @@ title: "ASIX2 - 0374 - Administració de Sistemes Operatius"
 
 ---
 
-Benvinguts al meu projecte de documentació, creat amb MkDocs! Em dic **María Gutiérrez** i aquest projecte MkDocs està destinat a la matèria ASIX2 - Administració de Sistemes Operatius de l’Institut de l’Ebre.
+Aquest projecte va començar com una proposta dels professors: crear la nostra pròpia empresa de ciberseguretat i fer una auditoria real a una altra empresa amb problemes de seguretat. L’objectiu era simular un cas professional i posar en pràctica tot el que hem après sobre hacking ètic i gestió d’empreses.
 
-En aquest lloc documentaré de manera detallada els diferents continguts del curs, incloent unitats teòriques, recursos en PDF i Markdown, scripts i exemples pràctics, així com les propostes de projectes per a l’avaluació final.
+Així va néixer Hexon Security, la nostra empresa de ciberseguretat amb el lema “Take care of your company with us”. Ens hem organitzat com si fos una empresa de veritat, amb rols definits, serveis, pressupostos i fins i tot una imatge corporativa pròpia.
 
-L’objectiu és oferir una guia clara i estructurada per a l’aprenentatge i la pràctica en l’administració de sistemes operatius, facilitant el seguiment del curs i proporcionant recursos útils tant per a mi com per a altres estudiants interessats en aquesta matèria.
+El projecte s’ha dividit en dues parts principals:
 
----
+* Primera part: hem creat el pla d’empresa, on expliquem com funciona Hexon Security, què oferim, com ens repartim la feina i com gestionem les tasques amb KanbanFlow seguint la metodologia Kanban.
 
-## Contingut del curs
+* Segona part: hem fet l’auditoria de seguretat a una empresa fictícia que hem creat, anomenada GlobalData Solutions (GDS). Aquesta empresa té diversos errors i vulnerabilitats que nosaltres hem hagut de trobar i explotar, com ara una injecció SQL, contrasenyes febles o serveis antics sense actualitzar.
 
-#### [Unitat 1. Creació entorn d'arrencada amb systemd Linux](unitat1/unitat1.md)
-
-#### [Unitat 2.](unitat2/unitat2.md)
-
-#### [Unitat 3.](unitat3/unitat3.md)
-
-#### [Unitat 4.](unitat4/unitat4.md)
-
-#### [Unitat 5.](unitat5/unitat5.md)
-
-#### [Unitat 6.](unitat6/unitat6.md)
-
-#### [Unitat 7.](unitat7/unitat7.md)
+Un cop hem aconseguit entrar-hi, la part més important ha estat fer d’assessors: explicar com solucionar cada problema i com millorar la seguretat general de l’empresa. Tot això ho hem recollit en un informe final amb proves, captures i recomanacions.
 
 ---
 
