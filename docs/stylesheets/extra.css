@@ -1,26 +1,45 @@
-/* Solo imágenes del contenido principal de los archivos Markdown */
-main .md-typeset img {
-    display: block;                 /* mantiene la imagen como bloque */
-    margin-left: 0;                 /* alineada a la izquierda */
-    margin-right: auto;             /* empuja el resto hacia la derecha */
-    border: 3px solid var(--md-primary-fg-color);
-    width: 60%;                     /* ocupa el 60% del contenedor */
-    max-width: 100%;                /* nunca excede el ancho del contenedor */
+/* =======================
+   PALETA MODO CLARO
+   ======================= */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #7B95C5;  /* azul claro principal */
+  --md-primary-fg-color--light: #A0B0D8; /* versión más clara para hover */
+  --md-primary-fg-color--dark:  #4E6299; /* versión oscura para contrastes */
+
+  --md-accent-fg-color:         #7B95C5;  /* accent igual que primary */
+  --md-accent-fg-color--light:  #A0B0D8;
+  --md-accent-fg-color--dark:   #4E6299;
 }
 
-/* Paleta para el esquema slate / modo oscuro */
+/* =======================
+   PALETA MODO OSCURO
+   ======================= */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #325FA9;  /* azul principal */
-  --md-primary-fg-color--light: #4A75B8; /* azul más claro para resaltar */
+  --md-primary-fg-color:        #325FA9;  /* azul oscuro principal */
+  --md-primary-fg-color--light: #5880C1; /* versión clara para hover */
   --md-primary-fg-color--dark:  #1E3D70; /* versión oscura */
 
   --md-accent-fg-color:         #325FA9; 
-  --md-accent-fg-color--light:  #4A75B8;
+  --md-accent-fg-color--light:  #5880C1;
   --md-accent-fg-color--dark:   #1E3D70;
 }
 
-/* Opcional: color de selección de texto */
-body[data-md-color-scheme="slate"] ::selection {
-    background-color: #4A75B8; /* azul más claro al seleccionar texto */
-    color: #ffffff; /* texto blanco sobre el fondo azul */
+/* =======================
+   IMÁGENES EN CONTENIDO MARKDOWN
+   ======================= */
+main .md-typeset img {
+    display: block;                 /* bloque para permitir margen */
+    margin-left: 0;                 /* alineadas a la izquierda */
+    margin-right: auto;
+    border: 3px solid var(--md-primary-fg-color); /* usa el color del tema según modo */
+    width: 60%;                     
+    max-width: 100%;                
+}
+
+/* =======================
+   HOVER EN ENLACES (MODO OSCURO)
+   ======================= */
+[data-md-color-scheme="slate"] main .md-typeset a:hover,
+[data-md-color-scheme="slate"] nav.md-nav a:hover {
+    color: var(--md-primary-fg-color--light); /* más claro que el color principal */
 }
