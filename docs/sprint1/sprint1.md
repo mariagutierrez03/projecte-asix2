@@ -125,6 +125,14 @@ A més, cada tasca té assignat un responsable (EA - Edgar, MG - Maria, VC - Ví
 
 ### Anàlisi de riscos
 
+Durant l’auditoria de l’empresa Global Data Solutions, hem fet un estudi per detectar quins elements i processos de l’empresa podrien estar exposats a possibles riscos o problemes. L’objectiu d’aquest estudi és saber quins riscos són més probables i quins podrien tenir un impacte més gran, per així decidir quines accions cal prendre primer.
+
+Hem revisat diferents parts de la infraestructura, com els servidors interns, els formularis de la web, els accessos dels administradors i la informació dels clients. Cada risc s’ha analitzat segons la seva probabilitat i les conseqüències que podria causar, obtenint un resultat que ens indica quines coses cal arreglar de manera urgent i quines es poden gestionar amb mesures preventives més senzilles.
+
+A més, hem proposat solucions pràctiques com actualitzar el programari, reforçar les contrasenyes, separar parts de la xarxa per protegir-les millor o formar els usuaris perquè reconeguin intents de phishing.
+
+![foto](./fotos/analisi-riscos.png)
+
 ---
 
 ## Acords i abast del servei
@@ -132,8 +140,6 @@ A més, cada tasca té assignat un responsable (EA - Edgar, MG - Maria, VC - Ví
 ### Anàlisi de mercat
 
 L’objectiu d’aquest apartat és analitzar com està el mercat laboral a les Terres de l’Ebre en el sector de la ciberseguretat i la informàtica. També volem veure quines oportunitats hi ha per a persones joves amb ganes d’aprendre i formar-se.
-
----
 
 #### Ocupacions principals
 
@@ -145,15 +151,11 @@ En aquest sector hi ha diversos perfils importants:
 - **Administradors de sistemes i xarxes:** mantenen servidors i serveis funcionant correctament.  
 - **Enginyers de seguretat:** dissenyen sistemes segurs des del principi dels projectes.  
 
----
-
 #### Perfils i competències
 
 Segons el SEPE, la demanda d’aquests professionals ha crescut molt. Les empreses busquen persones amb titulació en informàtica, telecomunicacions o FP superior, experiència en administració de sistemes i xarxes, i certificacions com **CompTIA Security+**, **CEH** o **OSCP**. També valoren que sàpigues analitzar problemes, treballar sota pressió i comunicar-te bé amb l’equip. Els llocs solen ser a jornada completa, tot i que alguns poden requerir estar disponibles per incidències.
 
 ![foto](./fotos/sepe.png)
-
----
 
 #### Tendències i oportunitats
 
@@ -164,6 +166,8 @@ Altres ocupacions amb potencial inclouen tècnics de suport informàtic, adminis
 ---
 
 ### Elaboració del contracte simbòlic
+
+---
 
 ### Abast i limitacions de l'auditoria
 
