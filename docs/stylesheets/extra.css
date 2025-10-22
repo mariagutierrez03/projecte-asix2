@@ -10,7 +10,7 @@ main .md-typeset img {
 
 /* Paleta para el esquema por defecto */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:        #c2558b; /* rosa principal más oscuro */
+  --md-primary-fg-color:        #000000; /* rosa principal más oscuro */
   --md-primary-fg-color--light: #d97aa8; /* versión clara */
   --md-primary-fg-color--dark:  #962f5f; /* versión oscura */
 
