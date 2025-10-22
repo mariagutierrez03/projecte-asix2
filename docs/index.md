@@ -20,7 +20,8 @@ Esperem que aquesta documentació us sigui útil i inspiradora, tant si esteu ap
 
 Gràcies per visitar el nostre projecte!
 
----
+![foto](fotos/intro.jpg)
 
 ---
+
 
