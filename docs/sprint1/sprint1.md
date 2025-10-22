@@ -135,7 +135,7 @@ L’objectiu d’aquest apartat és analitzar com està el mercat laboral a les 
 
 ---
 
-### Ocupacions principals
+#### Ocupacions principals
 
 En aquest sector hi ha diversos perfils importants:
 
@@ -147,18 +147,21 @@ En aquest sector hi ha diversos perfils importants:
 
 ---
 
-### Perfils i competències
+#### Perfils i competències
 
 Segons el SEPE, la demanda d’aquests professionals ha crescut molt. Les empreses busquen persones amb titulació en informàtica, telecomunicacions o FP superior, experiència en administració de sistemes i xarxes, i certificacions com **CompTIA Security+**, **CEH** o **OSCP**. També valoren que sàpigues analitzar problemes, treballar sota pressió i comunicar-te bé amb l’equip. Els llocs solen ser a jornada completa, tot i que alguns poden requerir estar disponibles per incidències.
+
 ![foto](./fotos/sepe.png)
+
 ---
 
-### Tendències i oportunitats
+#### Tendències i oportunitats
 
 Els perfils amb més sortida ara mateix són **administradors de sistemes**, **programadors** i **analistes TIC**. Però els especialistes en ciberseguretat, els enginyers de sistemes amb coneixements de seguretat i els professionals de **Big Data** estan creixent molt ràpidament. Aquest creixement és a causa de la digitalització i l’augment d’incidents de seguretat.  
 
 Altres ocupacions amb potencial inclouen tècnics de suport informàtic, administradors de xarxes, consultors de seguretat i desenvolupadors de software segur.
 
+---
 
 ### Elaboració del contracte simbòlic
 
@@ -205,4 +208,4 @@ Altres ocupacions amb potencial inclouen tècnics de suport informàtic, adminis
     ![foto](./fotos/kanban2.png)
   - Setmana 3 - 4
     ![foto](./fotos/kanban3.png)
-- Annex-4 Altres documents de suport
+- Annex - 4 Altres documents de suport
