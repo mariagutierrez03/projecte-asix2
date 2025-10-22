@@ -1,7 +1,7 @@
 
 # Projecte Intermodular
 
-
+![foto](./fotos/portada.png)
 
 **Autors:** María Gutiérrez, Edgar Alcaraz i Víctor Hernández  
 **Grup:** 3  
@@ -29,6 +29,8 @@ Un cop hem aconseguit accedir-hi, la feina més important és la de consultor: p
 ### Hexon Security - Empresa ciberseguretat
 
 La nostra empresa, Hexon Security, es dedica a fer pentesting o, dit d'una manera senzilla, a fer de "hacker ètic" per a altres empreses. El nostre objectiu és entrar als sistemes del client abans que ho faci un hacker, per trobar les portes obertes i tancar-les. El nostre lema és: "Take care of your company with us" (Cuida la teva empresa amb nosaltres).
+
+![foto](./fotos/banner.png)
 
 ---
 
@@ -66,12 +68,14 @@ Hem detectat que moltes empreses petites i mitjanes (PyMEs) inverteixen molts di
 
 ---
 
-### Global Data Solutions - Empresa auditada
+## Global Data Solutions - Empresa auditada
 
 La nostra empresa client fictícia es diu GlobalData Solutions (GDS). És una empresa de gestió de dades que té un sistema online perquè els seus clients puguin consultar informació i factures. Aquesta empresa té dos tipus de servidors que auditaran:
 
 - **El servidor web (Frontend):** És on els usuaris de GDS entren amb un usuari i contrasenya. Aquest servidor executa l'aplicació.  
 - **El servidor de gestió Interna:** És el cor de l'empresa, on guarden els fitxers importants. Aquest servidor hauria d'estar molt protegit, però no ho està.
+
+![foto](./fotos/banner2.png)
 
 ---
 
@@ -82,6 +86,8 @@ Perquè el nostre projecte sigui pràctic i real, els servidors de GDS tenen tre
 - **Error de configuració (sistemes antics):** El seu servidor de gestió interna utilitza un programa antic (per exemple, una versió vella d'un servei web o un sistema d'arxius) que ja té un defecte de seguretat conegut. Aquest defecte permet, per exemple, que un atacant executi ordres a l'ordinador sense permís (això es diu RCE o Execució Remota de Codi). Aquesta serà la feina: trobar la versió del programa i aplicar l'atac conegut.  
 - **Injecció SQL (SQL Injection):** El formulari de login de la seva pàgina web (on poses usuari i contrasenya) està mal fet. El sistema agafa el que escrius i ho envia directament a la base de dades sense comprovar si és una ordre perillosa. L’empresa de ciberseguretat podrà escriure un codi especial a la casella de la contrasenya que enganyi la base de dades i li digui: "No et preocupis per la contrasenya, deixa'm passar". Això permetrà a Hexon Security entrar a l'aplicació sense tenir cap usuari vàlid.  
 - **Contrasenyes de fàbrica o molt dèbils:** El seu servidor de gestió interna té un accés (per exemple, per FTP o RDP) amb un usuari que és "admin" i una contrasenya molt simple com "12345". Hexon Security provarà les contrasenyes més comunes (un atac de "força bruta" molt ràpid) i aconseguirà accés als fitxers interns de l'empresa.
+
+![foto](./fotos/SQL-Injection-1.png)
 
 ---
 
@@ -110,6 +116,8 @@ Tal com es veu a la imatge, el nostre tauler es divideix en quatre columnes prin
 - **Fet** Les tasques finalitzades. L'objectiu és tenir totes les tasques en aquesta columna al final del projecte.  
 
 A més, cada tasca té assignat un responsable (EA - Edgar, MG - Maria, VC - Víctor) i una estimació de temps (per exemple, 4h per al 'Pla d'empresa'), la qual cosa ens ajuda a gestionar la càrrega de treball i els terminis.
+
+![foto](./fotos/kanban1.png)
 
 ---
 
@@ -164,6 +172,8 @@ A més, cada tasca té assignat un responsable (EA - Edgar, MG - Maria, VC - Ví
 - Annex - 1 Codi font de l'aplicació Python  
 - Annex - 2 Codi font de la pàgina web  
 - Annex - 3 Captures del tauler de tasques (Kanban Flow)  
-  - Setmana 1 - 2  
-  - Setmana 3 - 4  
+  - Setmana 1 - 2
+    ![foto](./fotos/kanban2.png)
+  - Setmana 3 - 4
+    ![foto](./fotos/kanban3.png)
 - Annex-4 Altres documents de suport
