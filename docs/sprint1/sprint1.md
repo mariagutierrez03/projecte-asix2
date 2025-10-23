@@ -209,11 +209,19 @@ Hi ha diverses empreses i institucions on aquests perfils poden treballar i cré
 
 ## Annexos
 
-- Annex - 1 Codi font de l'aplicació Python  
-- Annex - 2 Codi font de la pàgina web  
-- Annex - 3 Captures del tauler de tasques (Kanban Flow)  
+### Annex - 1 Codi font de l'aplicació Python  
+
+### Annex - 2 Codi font de la pàgina web  
+
+### Annex - 3 Captures del tauler de tasques (Kanban Flow)  
+
   - Setmana 1 - 2
     ![foto](./fotos/kanban2.png)
   - Setmana 3 - 4
     ![foto](./fotos/kanban3.png)
-- Annex - 4 Altres documents de suport
+  - Setmana 5 - 6
+    ![foto](./fotos/kanban4.png)
+---
+
+### Annex - 4 Altres documents de suport
+
