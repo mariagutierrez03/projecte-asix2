@@ -163,6 +163,10 @@ Els perfils amb més sortida ara mateix són **administradors de sistemes**, **p
 
 Altres ocupacions amb potencial inclouen tècnics de suport informàtic, administradors de xarxes, consultors de seguretat i desenvolupadors de software segur.
 
+#### Empreses a les Terres de l’Ebre
+
+Hi ha diverses empreses i institucions on aquests perfils poden treballar i créixer professionalment. L’Hospital Verge de la Cinta, el Consell Comarcal del Baix Ebre i l’Ajuntament de Tortosa ofereixen oportunitats al sector públic. Entre les empreses privades, DISI Serveis Informàtics, REHAU, Pentrilo, EbreSoft i iTebre ofereixen feina relacionada amb informàtica, seguretat i desenvolupament de software.
+
 ---
 
 ### Elaboració del contracte simbòlic
