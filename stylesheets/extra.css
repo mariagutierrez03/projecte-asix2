@@ -1,0 +1,42 @@
+/*
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #1C4293;
+  --md-primary-fg-color--light: #4A6BB5;
+  --md-primary-fg-color--dark:  #122F6B;
+
+  --md-accent-fg-color:         #1C4293;  
+  --md-accent-fg-color--light:  #4A6BB5;
+  --md-accent-fg-color--dark:   #122F6B;
+}
+*/
+/*
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #325FA9;
+  --md-primary-fg-color--light: #5880C1;
+  --md-primary-fg-color--dark:  #1E3D70;
+
+  --md-accent-fg-color:         #325FA9; 
+  --md-accent-fg-color--light:  #5880C1;
+  --md-accent-fg-color--dark:   #1E3D70;
+}
+*/
+/* =======================
+   IMÁGENES EN CONTENIDO MARKDOWN
+   ======================= */
+main .md-typeset img {
+    display: block;                 
+    margin-left: 0;                 /* alineadas a la izquierda */
+    margin-right: auto;
+    border: 3px solid var(--md-primary-fg-color); /* usa color principal según modo */
+    width: 60%;                     
+    max-width: 100%;                
+}
+
+/* =======================
+   HOVER EN ENLACES SOLO MODO OSCURO
+   ======================= 
+[data-md-color-scheme="slate"] main .md-typeset a:hover,
+[data-md-color-scheme="slate"] nav.md-nav a:hover {
+    color: var(--md-primary-fg-color--light);
+}
+*/
