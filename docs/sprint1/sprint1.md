@@ -1,5 +1,8 @@
 
-# Projecte Intermodular
+---
+layout: default
+title: "Projecte Intermodular"
+---
 
 ![foto](./fotos/portada.png)
 
