@@ -198,9 +198,9 @@ Per preparar-nos per treballar en llocs com l’Institut Pere Mata o els ajuntam
 
 ### Elaboració del contracte simbòlic
 
-En aquesta part del projecte hem elaborat un contracte simbòlic d’auditoria de seguretat entre una empresa auditora i un client. L’objectiu ha estat definir un marc professional i legal per a la realització d’un pentesting, simulant una situació real dins del sector de la ciberseguretat. [Document contracte simbolic](/projecte-asix2/docs/documents/analisi-mercat-grup3.pdf)
-[Document contracte simbolic](/projecte-asix2/docs/documents/contracte-simbolic.pdf)
-[Document contracte simbolic](/projecte-asix2/docs/documents/grup3-formacio-complementaria.pdf)
+En aquesta part del projecte hem elaborat un contracte simbòlic d’auditoria de seguretat entre una empresa auditora i un client. L’objectiu ha estat definir un marc professional i legal per a la realització d’un pentesting, simulant una situació real dins del sector de la ciberseguretat. [Document contracte simbolic](./projecte-asix2/docs/documents/analisi-mercat-grup3.pdf)
+[Document contracte simbolic](/docs/documents/contracte-simbolic.pdf)
+[Document contracte simbolic](./docs/documents/grup3-formacio-complementaria.pdf)
 
 S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen i quins queden fora, així com les accions permeses i les limitacions per garantir que les proves es facin de forma controlada i sense causar danys. Finalment, s’ha establert el lliurament d’un informe amb els resultats i recomanacions de millora en seguretat.
 
