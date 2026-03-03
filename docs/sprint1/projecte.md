@@ -243,7 +243,11 @@ S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen
 
 ### Annex - 1 Codi font de l'aplicació Python  
 
+---
+
 ### Annex - 2 Codi font de la pàgina web  
+
+---
 
 ### Annex - 3 Captures del tauler de tasques (Kanban Flow)  
 
@@ -257,3 +261,4 @@ S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen
 
 ### Annex - 4 Altres documents de suport
 
+---
