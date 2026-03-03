@@ -167,7 +167,8 @@ Altres ocupacions amb potencial inclouen tècnics de suport informàtic, adminis
 
 #### Empreses a les Terres de l’Ebre
 
-Hi ha diverses empreses i institucions on aquests perfils poden treballar i créixer professionalment. L’Hospital Verge de la Cinta, el Consell Comarcal del Baix Ebre i l’Ajuntament de Tortosa ofereixen oportunitats al sector públic. Entre les empreses privades, DISI Serveis Informàtics, REHAU, Pentrilo, EbreSoft i iTebre ofereixen feina relacionada amb informàtica, seguretat i desenvolupament de software.
+Hi ha diverses empreses i institucions on aquests perfils poden treballar i créixer professionalment. L’Hospital Verge de la Cinta, el Consell Comarcal del Baix Ebre i l’Ajuntament de Tortosa ofereixen oportunitats al sector públic. Entre les empreses privades, DISI Serveis Informàtics, REHAU, Pentrilo, EbreSoft i iTebre ofereixen feina relacionada amb informàtica, seguretat i desenvolupament de software.         
+[Document analisi de mercat](/docs/documents/analisi-mercat-grup3.pdf)
 
 ---
 
@@ -188,19 +189,21 @@ A Tortosa no hi havia cap oferta disponible, així que vam ampliar la cerca a Ta
 
 #### Formació complementària segons el SEPE
 
-Hem consultat l’informe del [SEPE](https://www.sepe.es/HomeSepe/que-es-observatorio/deteccion-necesidades-formativas.html) sobre les necessitats formatives del sector informàtic. Hem vist quina formació valoren les empreses. Per a programadors i enginyers informàtics cal coneixements avançats en Java, Python, .NET, bases de dades, Power BI, Pentaho, Agile/DevOps i Cloud. Per a tècnics de sistemes i xarxes és important dominar xarxes, Windows i Linux, virtualització i seguretat. I per a tècnics de suport cal formació en resolució d’incidències, atenció a usuaris i eines com Jira o GLPI. Aquesta informació ens ajuda a saber exactament en què cal formar-nos per tenir més opcions de feina.
+Hem consultat l’informe del [SEPE](https://www.sepe.es/HomeSepe/que-es-observatorio/deteccion-necesidades-formativas.html) sobre les necessitats formatives del sector informàtic. Hem vist quina formació valoren les empreses. Per a programadors i enginyers informàtics cal coneixements avançats en Java, Python, .NET, bases de dades, Power BI, Pentaho, Agile/DevOps i Cloud. Per a tècnics de sistemes i xarxes és important dominar xarxes, Windows i Linux, virtualització i seguretat. I per a tècnics de suport cal formació en resolució d’incidències, atenció a usuaris i eines com Jira o GLPI. Aquesta informació ens ajuda a saber exactament en què cal formar-nos per tenir més opcions de feina.            
+
 
 #### Com completar la nostra formació
 
-Per preparar-nos per treballar en llocs com l’Institut Pere Mata o els ajuntaments de Reus i Tarragona, hem vist que cal reforçar la nostra formació en programació (Java, SQL, PHP), anàlisi de dades (Power BI, Pentaho), ciberseguretat, administració de sistemes i gestió de projectes amb Agile o DevOps. La bona notícia és que no cal començar de zero, ja que tenim la base del CFGS d’ASIX. Ara només hem de fer cursos complementaris, que podem trobar a entitats com Multimèdia Tarragona, Fundació Esplai, COETIC, UOC, UAB, Aula Magna o plataformes com SOC, Conforcat i Fundesplai. Hem planificat un calendari amb cursos de programació, dades, Cloud/DevOps, ciberseguretat i Moodle, així podem actualitzar-nos, aprendre coses noves i tenir més opcions de feina sense tornar a fer un cicle complet.
+Per preparar-nos per treballar en llocs com l’Institut Pere Mata o els ajuntaments de Reus i Tarragona, hem vist que cal reforçar la nostra formació en programació (Java, SQL, PHP), anàlisi de dades (Power BI, Pentaho), ciberseguretat, administració de sistemes i gestió de projectes amb Agile o DevOps. La bona notícia és que no cal començar de zero, ja que tenim la base del CFGS d’ASIX. Ara només hem de fer cursos complementaris, que podem trobar a entitats com Multimèdia Tarragona, Fundació Esplai, COETIC, UOC, UAB, Aula Magna o plataformes com SOC, Conforcat i Fundesplai. Hem planificat un calendari amb cursos de programació, dades, Cloud/DevOps, ciberseguretat i Moodle, així podem actualitzar-nos, aprendre coses noves i tenir més opcions de feina sense tornar a fer un cicle complet.             
+[Document formació complementaria](/docs/documents/grup3-formacio-complementaria.pdf)
 
 ---
 
 ### Elaboració del contracte simbòlic
 
-En aquesta part del projecte hem elaborat un contracte simbòlic d’auditoria de seguretat entre una empresa auditora i un client. L’objectiu ha estat definir un marc professional i legal per a la realització d’un pentesting, simulant una situació real dins del sector de la ciberseguretat. [Document contracte simbolic](./projecte-asix2/docs/documents/analisi-mercat-grup3.pdf)
+En aquesta part del projecte hem elaborat un contracte simbòlic d’auditoria de seguretat entre una empresa auditora i un client. L’objectiu ha estat definir un marc professional i legal per a la realització d’un pentesting, simulant una situació real dins del sector de la ciberseguretat.         
 [Document contracte simbolic](/docs/documents/contracte-simbolic.pdf)
-[Document contracte simbolic](./docs/documents/grup3-formacio-complementaria.pdf)
+
 
 S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen i quins queden fora, així com les accions permeses i les limitacions per garantir que les proves es facin de forma controlada i sense causar danys. Finalment, s’ha establert el lliurament d’un informe amb els resultats i recomanacions de millora en seguretat.
 
