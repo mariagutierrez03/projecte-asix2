@@ -9,7 +9,7 @@ title: "Projecte Intermodular"
 **Grup:** 3  
 **Data:** 08/10/2025  
 **Lloc:** Institut de l’Ebre  
-**Professors:** Marc Fuertes, Víctor Cid i Diego Cervellera  
+**Professors:** Joan Pasqual Almudeve, Víctor Cid i Diego Cervellera  
 **Cicle formatiu:** 2n de Superior d’Administració de Sistemes Informàtics en Xarxa   
 
 ---
