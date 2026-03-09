@@ -195,7 +195,7 @@ Hem consultat l’informe del [SEPE](https://www.sepe.es/HomeSepe/que-es-observa
 #### Com completar la nostra formació
 
 Per preparar-nos per treballar en llocs com l’Institut Pere Mata o els ajuntaments de Reus i Tarragona, hem vist que cal reforçar la nostra formació en programació (Java, SQL, PHP), anàlisi de dades (Power BI, Pentaho), ciberseguretat, administració de sistemes i gestió de projectes amb Agile o DevOps. La bona notícia és que no cal començar de zero, ja que tenim la base del CFGS d’ASIX. Ara només hem de fer cursos complementaris, que podem trobar a entitats com Multimèdia Tarragona, Fundació Esplai, COETIC, UOC, UAB, Aula Magna o plataformes com SOC, Conforcat i Fundesplai. Hem planificat un calendari amb cursos de programació, dades, Cloud/DevOps, ciberseguretat i Moodle, així podem actualitzar-nos, aprendre coses noves i tenir més opcions de feina sense tornar a fer un cicle complet.             
-[Document formació complementaria](/projecte-asix2/documents/documents/grup3-formacio-complementaria.pdf)
+[Document formació complementaria](/documents/documents/grup3-formacio-complementaria.pdf)
 
 ---
 
