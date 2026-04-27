@@ -342,9 +342,37 @@ Així és com es relacionen totes les parts del projecte:
 
 ## Incidències
 
+Durant el desenvolupament i les proves del projecte hem tingut algunes incidències que hem anat resolent a mesura que apareixien. Aquestes són les més destacades:
+
+### 1. Problemes amb els escaneigs en rangs CIDR
+Alguns mòduls, com **SSH Audit** i **Enum4Linux**, no acceptaven rangs de xarxa (ex: `192.168.0.0/24`) i mostraven errors de resolució.
+**Solució:** limitar aquests mòduls perquè només funcionin amb IPs individuals i avisar l’usuari.
+
+### 2. Falta de permisos en alguns escaneigs
+Quan l’eina s’executava sense permisos d’administrador, alguns escaneigs (ports i vulnerabilitats) no retornaven resultats correctes.
+**Solució:** afegir un avís recomanant executar l’aplicació amb *sudo*.
+
+### 3. API keys no configurades al mòdul OSINT
+Les funcionalitats de SecurityScorecard i BuiltWith no funcionaven per falta d’API keys.
+**Solució:** documentar on s’han d’afegir i mostrar un missatge d’error clar.
+
+### 4. Retards en l’escaneig de vulnerabilitats
+En xarxes amb molts hosts, el procés trigava més del previst i semblava que l’aplicació s’havia quedat bloquejada.
+**Solució:** afegir un indicador de progrés i missatges d’estat.
+
+### 5. Informació incompleta en la detecció de serveis
+En alguns dispositius antics, Nmap retornava dades incompletes o versions incorrectes.
+**Solució:** mostrar “N/A” quan la informació no és fiable i evitar errors al panell de resultats.
+
 ---
 
 ## Conclusió
+
+Aquest projecte ens ha servit per aprendre de veritat com funciona una auditoria de seguretat i tot el que implica treballar en equip. Hem creat una empresa fictícia, hem organitzat les tasques, hem desenvolupat una eina pròpia i hem fet una auditoria completa com si fos un cas real.
+
+A nivell tècnic hem après a utilitzar eines de ciberseguretat, a detectar vulnerabilitats i a entendre millor com funcionen les xarxes i els serveis. També hem vist la importància de documentar bé el que fem i d’explicar-ho de manera clara perquè qualsevol persona ho pugui entendre.
+
+En general, aquest projecte ens ha ajudat a posar en pràctica tot el que hem estudiat i a veure que som capaços de treballar com un equip professional. Ens quedem amb l’experiència, els coneixements i la sensació d’haver fet una feina completa i útil.
 
 ---
 
