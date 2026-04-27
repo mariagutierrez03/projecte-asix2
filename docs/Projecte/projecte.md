@@ -222,13 +222,13 @@ S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen
 
 ### Disseny i desenvolupament de l'aplicació Python
 
-#### Documentació de l’Arquitectura i Funcionament del Projecte
+#### Documentació de l’arquitectura i funcionament del projecte
 
 En aquest apartat explico el meu projecte d’auditoria de ciberseguretat. L’objectiu és que qualsevol persona pugui comprendre què fa cada fitxer i com es relacionen entre ells, independentment del seu nivell tècnic.
 
 ---
 
-#### 1. Interfície i Control de l’Aplicació
+#### 1. Interfície i control de l’aplicació
 
 ##### main_enterprise.py
 Aquest és el fitxer principal i el punt d’entrada de tota l’aplicació. Aquí és on creo la interfície gràfica utilitzant *CustomTkinter*, amb un estil més modern i professional. També gestiono les animacions, els panells de resultats i tota la lògica que permet que l’usuari interactuï amb l’aplicació sense que es quedi bloquejada.  
@@ -244,7 +244,7 @@ En aquest fitxer centralitzo tots els colors, tipografies i estils visuals. Aix�
 
 ---
 
-#### 2. Mòduls d’Escaneig i Auditoria
+#### 2. Mòduls d’escaneig i auditoria
 
 Aquests mòduls són els encarregats de fer les diferents parts de l’auditoria. Cada un té una funció específica i treballen de manera independent.
 
@@ -272,7 +272,7 @@ Analitza serveis web i revisa aspectes com capçaleres de seguretat, directoris 
 
 ---
 
-#### 3. Utilitats, Processament i Notificacions
+#### 3. Utilitats, processament i notificacions
 
 ##### utils.py
 Inclou funcions de suport que utilitzo en diferents parts del projecte: classificació de vulnerabilitats, neteja de textos, gestió de rutes d’exportació i altres tasques auxiliars.        
@@ -290,7 +290,7 @@ Permet enviar notificacions automàtiques a través d’un bot de Telegram. El t
 
 ---
 
-#### 4. Execució, Contenidors i Entorn
+#### 4. Execució, contenidors i entorn
 
 ##### executar_enterprise.sh
 Script que facilita l’execució del projecte en un entorn local. Prepara les dependències i llança l’aplicació.        
@@ -319,7 +319,7 @@ Aquests expliquen com utilitzar el projecte, com configurar Docker i com funcion
 
 ---
 
-#### 5. Esquema General del Sistema
+#### 5. Esquema general del sistema
 
 Així és com es relacionen totes les parts del projecte:
 <img width="697" height="607" alt="image" src="https://github.com/user-attachments/assets/96e8897a-2cbc-406c-ade3-77ed7afda63a" />
