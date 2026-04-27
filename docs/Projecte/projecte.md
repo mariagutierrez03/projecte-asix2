@@ -458,23 +458,21 @@ En general, aquest projecte ens ha ajudat a posar en pràctica tot el que hem es
 
 ### Annex - 1 Altres documents de suport
 
-# Documents Relacionats
-
 A continuació es mostren tots els documents externs utilitzats o generats durant el projecte. Tots estan allotjats a Google Drive i disponibles per a consulta.
 
-## Document 1 – Informe anàlisi de mercat
+### Document 1 – Informe anàlisi de mercat
 [Accedir al document](https://drive.google.com/file/d/1GY8h2x8DUa1mmJFDsqSDdBc80n_MMZkC/view?usp=sharing)
 
-## Document 2 – Document anàlisi de mercat a la zona
+### Document 2 – Document anàlisi de mercat a la zona
 [Accedir al document](https://drive.google.com/file/d/12n2_zfU1OhRE_dLl1p2wxlH_1EGmc49m/view?usp=sharing)
 
-## Document 3 – Full de càlcul anàlisi de riscos(Google Sheets) 
+### Document 3 – Full de càlcul anàlisi de riscos(Google Sheets) 
 [Accedir al full de càlcul](https://docs.google.com/spreadsheets/d/1ZOqm3yH9TqcVv-uMncqEnoJv5SiRxy1y/edit?usp=sharing&ouid=107386172793702573921&rtpof=true&sd=true)
 
-## Document 4 – Document contracte simbòlic
+### Document 4 – Document contracte simbòlic
 [Accedir al document](https://drive.google.com/file/d/1MjqqdDcT6AqqtutKnLbIIkG96ZJiXLCC/view?usp=sharing)
 
-## Document 5 – Document formació complementària
+### Document 5 – Document formació complementària
 [Accedir al document](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing)
 
 
