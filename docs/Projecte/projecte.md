@@ -168,7 +168,6 @@ Altres ocupacions amb potencial inclouen tècnics de suport informàtic, adminis
 #### Empreses a les Terres de l’Ebre
 
 Hi ha diverses empreses i institucions on aquests perfils poden treballar i créixer professionalment. L’Hospital Verge de la Cinta, el Consell Comarcal del Baix Ebre i l’Ajuntament de Tortosa ofereixen oportunitats al sector públic. Entre les empreses privades, DISI Serveis Informàtics, REHAU, Pentrilo, EbreSoft i iTebre ofereixen feina relacionada amb informàtica, seguretat i desenvolupament de software.         
-[Document analisi de mercat](/docs/documents/analisi-mercat-grup3.pdf)
 
 ---
 
@@ -196,14 +195,11 @@ Hem consultat l’informe del [SEPE](https://www.sepe.es/HomeSepe/que-es-observa
 
 Per preparar-nos per treballar en llocs com l’Institut Pere Mata o els ajuntaments de Reus i Tarragona, hem vist que cal reforçar la nostra formació en programació (Java, SQL, PHP), anàlisi de dades (Power BI, Pentaho), ciberseguretat, administració de sistemes i gestió de projectes amb Agile o DevOps. La bona notícia és que no cal començar de zero, ja que tenim la base del CFGS d’ASIX. Ara només hem de fer cursos complementaris, que podem trobar a entitats com Multimèdia Tarragona, Fundació Esplai, COETIC, UOC, UAB, Aula Magna o plataformes com SOC, Conforcat i Fundesplai. Hem planificat un calendari amb cursos de programació, dades, Cloud/DevOps, ciberseguretat i Moodle, així podem actualitzar-nos, aprendre coses noves i tenir més opcions de feina sense tornar a fer un cicle complet.             
 
-[Document formació complementaria](docs/documents/grup3-formacio-complementaria.pdf)
-
 ---
 
 ### Elaboració del contracte simbòlic
 
 En aquesta part del projecte hem elaborat un contracte simbòlic d’auditoria de seguretat entre una empresa auditora i un client. L’objectiu ha estat definir un marc professional i legal per a la realització d’un pentesting, simulant una situació real dins del sector de la ciberseguretat.         
-[Document contracte simbolic](/docs/documents/contracte-simbolic.pdf)
 
 
 S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen i quins queden fora, així com les accions permeses i les limitacions per garantir que les proves es facin de forma controlada i sense causar danys. Finalment, s’ha establert el lliurament d’un informe amb els resultats i recomanacions de millora en seguretat.
@@ -338,7 +334,6 @@ Aquests expliquen com utilitzar el projecte, com configurar Docker i com funcion
 Així és com es relacionen totes les parts del projecte:
 <img width="697" height="607" alt="image" src="https://github.com/user-attachments/assets/96e8897a-2cbc-406c-ade3-77ed7afda63a" />
 
-
 ### Resultats
 
 ### Informe de vulnerabilitats trobades
@@ -433,24 +428,10 @@ Així és com es relacionen totes les parts del projecte:
 
 ## Annexos
 
-### Annex - 1 Codi font de l'aplicació Python  
+### Annex - 1 Estat del tauler de tasques (Kanban Flow)  
 
 ---
 
-### Annex - 2 Codi font de la pàgina web  
-
----
-
-### Annex - 3 Captures del tauler de tasques (Kanban Flow)  
-
-  - Setmana 1 - 2
-    ![foto](./fotos/kanban2.png)
-  - Setmana 3 - 4
-    ![foto](./fotos/kanban3.png)
-  - Setmana 5 - 6
-    ![foto](./fotos/kanban4.png)
----
-
-### Annex - 4 Altres documents de suport
+### Annex - 2 Altres documents de suport
 
 ---
