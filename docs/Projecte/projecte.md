@@ -355,6 +355,80 @@ Així és com es relacionen totes les parts del projecte:
 
 ## Webgrafia
 
+### 1. Fonts de Ciberseguretat i Pentesting
+- **OWASP Foundation.** (2024). *OWASP Top 10 – Vulnerabilities and Security Guidelines*.  
+  https://owasp.org
+
+- **MITRE Corporation.** (2024). *MITRE ATT&CK Framework*.  
+  https://attack.mitre.org
+
+- **NIST.** (2024). *Cybersecurity Framework (CSF)*.  
+  https://www.nist.gov/cyberframework
+
+- **CVE Details.** (2024). *Common Vulnerabilities and Exposures Database*.  
+  https://www.cvedetails.com
+
+
+### 2. Eines utilitzades en l’auditoria
+- **Nmap Project.** (2024). *Nmap Security Scanner*.  
+  https://nmap.org
+
+- **Cisco CX Security.** (2024). *Enum4linux – SMB Enumeration Tool*.  
+  https://github.com/CiscoCXSecurity/enum4linux
+
+- **Laramies, C.** (2024). *theHarvester – OSINT Gathering Tool*.  
+  https://github.com/laramies/theHarvester
+
+- **Offensive Security.** (2024). *Kali Linux Documentation*.  
+  https://www.kali.org
+
+- **ReportLab Developers.** (2024). *ReportLab PDF Toolkit Documentation*.  
+  https://www.reportlab.com/dev/docs
+
+
+### 3. Desenvolupament de l’aplicació Python
+- **Python Software Foundation.** (2024). *Python 3 Documentation*.  
+  https://docs.python.org/3
+
+- **Schimansky, T.** (2024). *CustomTkinter – Modern UI for Tkinter*.  
+  https://github.com/TomSchimansky/CustomTkinter
+
+- **Docker Inc.** (2024). *Docker Documentation*.  
+  https://docs.docker.com
+
+- **GitHub.** (2024). *Repositori i bones pràctiques de desenvolupament*.  
+  https://github.com
+
+
+### 4. Gestió del projecte i metodologia SCRUM
+- **Atlassian.** (2024). *Scrum Guide & Agile Methodologies*.  
+  https://www.atlassian.com/agile/scrum
+
+- **KanbanFlow.** (2024). *KanbanFlow – Task Management Tool*.  
+  https://kanbanflow.com
+
+
+### 5. Anàlisi de mercat i formació professional
+- **SEPE.** (2024). *Informe de necessitats formatives del sector TIC*.  
+  https://www.sepe.es
+
+- **Feina Activa.** (2024). *Ofertes TIC a Catalunya*.  
+  https://feinaactiva.gencat.cat
+
+- **Servei d’Ocupació de Catalunya (SOC).** (2024). *Formació i certificacions professionals*.  
+  https://serveiocupacio.gencat.cat
+
+
+### 6. Recursos generals de desenvolupament i xarxes
+- **W3Schools.** (2024). *Web Development Tutorials*.  
+  https://www.w3schools.com
+
+- **Mozilla Foundation.** (2024). *MDN Web Docs*.  
+  https://developer.mozilla.org
+
+- **Cisco Networking Academy.** (2024). *Networking & Cybersecurity Learning Platform*.  
+  https://www.netacad.com
+
 ---
 
 ## Annexos
