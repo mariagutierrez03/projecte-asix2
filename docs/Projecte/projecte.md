@@ -222,6 +222,109 @@ S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen
 
 ### Disseny i desenvolupament de l'aplicació Python
 
+#### Documentació de l’Arquitectura i Funcionament del Projecte
+
+En aquest apartat explico el meu projecte d’auditoria de ciberseguretat. L’objectiu és que qualsevol persona pugui comprendre què fa cada fitxer i com es relacionen entre ells, independentment del seu nivell tècnic.
+
+---
+
+#### 1. Interfície i Control de l’Aplicació
+
+##### main_enterprise.py
+Aquest és el fitxer principal i el punt d’entrada de tota l’aplicació. Aquí és on creo la interfície gràfica utilitzant *CustomTkinter*, amb un estil més modern i professional. També gestiono les animacions, els panells de resultats i tota la lògica que permet que l’usuari interactuï amb l’aplicació sense que es quedi bloquejada.  
+Per aconseguir-ho, els escanejos s’executen en paral·lel o de forma asíncrona.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/e05090fc-672c-4d69-b7e5-0b01737bb266" />
+
+
+##### estils_enterprise.py
+En aquest fitxer centralitzo tots els colors, tipografies i estils visuals. Això em permet mantenir el codi més net i facilita molt canviar el tema visual en el futur.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/8b661b78-8dba-46dd-a62a-59b8d0a41291" />
+
+
+
+---
+
+#### 2. Mòduls d’Escaneig i Auditoria
+
+Aquests mòduls són els encarregats de fer les diferents parts de l’auditoria. Cada un té una funció específica i treballen de manera independent.
+
+##### port_scanner.py
+Realitza escanejos de ports per detectar quins serveis estan oberts en un objectiu. Pot utilitzar *nmap* o sockets propis, i està optimitzat perquè funcioni ràpid gràcies al paral·lelisme.      
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/b0c62070-a798-4f63-a8c0-37bd0fe22053" />
+
+##### ssh_audit_module.py
+Analitza serveis SSH oberts i comprova si tenen configuracions insegures, algoritmes febles o banners exposats.      
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/4f4a818b-380d-4b80-8fcd-00a79b50a689" />
+
+##### enum4linux_scan.py
+Automatitza l’eina *enum4linux* per obtenir informació de serveis SMB/Samba. A més, interpreta els resultats perquè siguin més fàcils d’entendre.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/61e58fb0-c0d5-4885-8121-6e3e4edb49eb" />
+
+##### theharvester_osint.py
+Integra *theHarvester* per fer recollida d’informació OSINT: dominis, subdominis, correus electrònics i altres dades públiques relacionades amb un objectiu.      
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/5f4f686a-3aab-48c3-a9d0-a01e2e6e39e7" />
+
+##### web_scanner.py
+Analitza serveis web i revisa aspectes com capçaleres de seguretat, directoris exposats o configuracions potencialment vulnerables.
+
+> Les carpetes `theHarvester/` i `enum4linux/` contenen el codi i les dependències necessàries per fer funcionar aquests mòduls externs.      
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/1281a8ce-1716-4765-a5d0-02dcc8ccc8dd" />
+
+---
+
+#### 3. Utilitats, Processament i Notificacions
+
+##### utils.py
+Inclou funcions de suport que utilitzo en diferents parts del projecte: classificació de vulnerabilitats, neteja de textos, gestió de rutes d’exportació i altres tasques auxiliars.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/052c7a84-5eae-4ff5-94b8-37114e044b40" />
+
+##### pdf_generator.py
+Genera els informes finals utilitzant *reportlab*. He creat dos formats diferents:
+- **Client**: més senzill i fàcil d’entendre.
+- **Professional**: molt més detallat i pensat per auditors o equips tècnics.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/322108f4-7455-4593-bf21-5c081b57b502" />
+
+##### telegram_api.py
+Permet enviar notificacions automàtiques a través d’un bot de Telegram. El token del bot es guarda al fitxer `.env` per seguretat.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/a087faf3-6e1b-4189-9b62-ef78600ad5ad" />
+
+---
+
+#### 4. Execució, Contenidors i Entorn
+
+##### executar_enterprise.sh
+Script que facilita l’execució del projecte en un entorn local. Prepara les dependències i llança l’aplicació.        
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/0bb1fce6-0ba4-4ee8-9522-02fd139c2d16" />
+
+##### executar_docker.sh
+Permet executar el projecte dins d’un contenidor Docker, ideal per evitar problemes de compatibilitat i mantenir totes les eines encapsulades.      
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/d2adf972-12c7-4b02-b397-05a7ef3b57c5" />
+
+##### Dockerfile i .dockerignore
+Defineixen com es construeix la imatge Docker: sistema base, eines necessàries (com *nmap*), dependències Python i configuració d’execució.      
+<img width="1517" height="924" alt="image" src="https://github.com/user-attachments/assets/5d037fcd-4da5-48a8-a985-ded548cb0baf" />
+
+##### requirements.txt
+Llista totes les llibreries Python necessàries per fer funcionar el projecte.        
+<img width="1517" height="724" alt="image" src="https://github.com/user-attachments/assets/9f217fe9-627d-4ad5-ad7b-98ee0b79c88b" />
+
+##### Documentació addicional
+Inclou fitxers com:
+- `README.md`
+- `README_TELEGRAM.md`
+- `DOCKER_GUIA.md`
+- `LICENSE`
+
+Aquests expliquen com utilitzar el projecte, com configurar Docker i com funciona el bot de Telegram.
+
+---
+
+#### 5. Esquema General del Sistema
+
+Així és com es relacionen totes les parts del projecte:
+<img width="697" height="607" alt="image" src="https://github.com/user-attachments/assets/96e8897a-2cbc-406c-ade3-77ed7afda63a" />
+
+
 ### Resultats
 
 ### Informe de vulnerabilitats trobades
