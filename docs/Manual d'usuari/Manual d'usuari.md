@@ -1,4 +1,4 @@
-# Manual d'Usuari – Escàner de Xarxa Professional (Enterprise Edition)
+# Manual d'Usuari – Escàner de Xarxa Professional
 
 Aquest apartat està dedicat a presentar i contextualitzar el **Manual d'Usuari de l'Escàner de Xarxa Professional – Enterprise Edition**, un document tècnic elaborat pel nostre equip amb l’objectiu de descriure de manera clara, estructurada i professional totes les funcionalitats de l’aplicació desenvolupada durant el Projecte Intermodular.
 
