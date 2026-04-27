@@ -7,7 +7,7 @@ title: "Projecte Intermodular"
 
 **Autors:** María Gutiérrez, Edgar Alcaraz i Víctor Hernández  
 **Grup:** 3  
-**Data:** 08/10/2025  
+**Data:** 027/04/2026  
 **Lloc:** Institut de l’Ebre  
 **Professors:** Joan Pasqual Almudeve, Víctor Cid i Diego Cervellera  
 **Cicle formatiu:** 2n de Superior d’Administració de Sistemes Informàtics en Xarxa   
