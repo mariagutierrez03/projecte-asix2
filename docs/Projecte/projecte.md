@@ -212,13 +212,27 @@ S’ha definit l’abast de l’auditoria, indicant quins sistemes s’analitzen
 
 ## Execució tècnica i resultats
 
+### Disseny de l'entorn vulnerable
+Per a aquest projecte, hem dissenyat un entorn que simula una infraestructura empresarial real d'Alta Disponibilitat (HA). El nostre objectiu ha estat crear un escenari on la prioritat sigui la continuïtat del servei, cosa que ens permet analitzar com la redundància pot arribar a ser, alhora, un punt feble si no es gestiona correctament.
+
+Com es veu en el diagrama, l'arquitectura es basa en dos nodes principals (Servidor 1 i Servidor 2) configurats per treballar en paral·lel. Hem establert una connexió constant entre ells per a la sincronització i replicació de dades. Això vol dir que qualsevol canvi o fitxer es replica automàticament; una característica que, des de l'òptica de la seguretat, ens resulta molt interessant, ja que un atac amb èxit al node principal es podria propagar de forma transparent al secundari.
+
+Dins de cada servidor, hem desplegat els quatre serveis clau que volem posar a prova:
+
+* DHCP i DNS: Són els pilars de la xarxa. Els hem inclòs per veure com podem manipular l'assignació d'IPs o la resolució de noms per desviar el trànsit.
+
+* Servei Web: És la part més exposada de l'entorn, on buscarem vulnerabilitats en les aplicacions allotjades.
+
+* Servei FTP: L'hem configurat com a punt de transferència de fitxers per auditar la seguretat de les dades en trànsit i el control d'accessos.
+
+Finalment, hem definit un accés unificat per als clients de la xarxa. Amb aquesta estructura, el nostre pla és simular com interactuen els usuaris amb els serveis mentre intentem comprometre el sistema o forçar una fallada en els mecanismes de failover. En definitiva, hem buscat un equilibri entre un sistema robust i un laboratori ple de vectors d'atac per explorar.          
+<img width="1408" height="768" alt="Gemini_Generated_Image_w7joeww7joeww7jo" src="https://github.com/user-attachments/assets/da30ee24-7544-46e3-85be-05d76c3e20fa" />
+
 ### Configuració de l'entorn d'auditoria
 
-### Disseny de la infraestructura de xarxa
-
-### Preparació de l'entorn vulnerable
 
 ### Aplicació d'auditoria i ús d'eines
+
 
 ### Disseny i desenvolupament de l'aplicació Python
 
