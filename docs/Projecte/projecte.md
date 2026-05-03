@@ -7,7 +7,7 @@ title: "Projecte Intermodular"
 
 **Autors:** María Gutiérrez, Edgar Alcaraz i Víctor Hernández  
 **Grup:** 3  
-**Data:** 27/04/2026  
+**Data:** 04/05/2026  
 **Lloc:** Institut de l’Ebre  
 **Professors:** Joan Pasqual Almudeve, Víctor Cid i Diego Cervellera  
 **Cicle formatiu:** 2n de Superior d’Administració de Sistemes Informàtics en Xarxa   
@@ -226,7 +226,6 @@ Finalment, hem definit un accés unificat per als clients de la xarxa. Amb aques
 
 ### Configuració de infraestructura d'alta disponibilitat amb Ubuntu 24
 
-#### Requisits previs
 1. Per a realitzar aquesta infraestructura necessitem tres màquines virtuals amb Ubuntu 24, connectades en xarxa interna o adaptador pont a VirtualBox. Les IPs planificades són: servidor MASTER (192.168.56.10), servidor SLAVE (192.168.56.11) i un client que rebrà IP per DHCP.
 
 2. La IP virtual flotant que configurarem serà la 192.168.56.100, i serà l'adreça que utilitzaran els clients per a connectar-se als serveis DNS, FTP i WEB. D'aquesta manera, si un servidor cau, l'altre assumirà automàticament la IP virtual i els serveis continuaran funcionant.
