@@ -224,8 +224,138 @@ Dins de cada servidor, hem desplegat els quatre serveis clau que volem posar a p
 Finalment, hem definit un accés unificat per als clients de la xarxa. Amb aquesta estructura, el nostre pla és simular com interactuen els usuaris amb els serveis mentre intentem comprometre el sistema o forçar una fallada en els mecanismes de failover. En definitiva, hem buscat un equilibri entre un sistema robust i un laboratori ple de vectors d'atac per explorar.          
 <img width="1408" height="768" alt="Gemini_Generated_Image_w7joeww7joeww7jo" src="https://github.com/user-attachments/assets/da30ee24-7544-46e3-85be-05d76c3e20fa" />
 
-### Configuració de l'entorn d'auditoria
+### Configuració de infraestructura d'alta disponibilitat amb Ubuntu 24
 
+#### Requisits previs
+1. Per a realitzar aquesta infraestructura necessitem tres màquines virtuals amb Ubuntu 24, connectades en xarxa interna o adaptador pont a VirtualBox. Les IPs planificades són: servidor MASTER (192.168.56.10), servidor SLAVE (192.168.56.11) i un client que rebrà IP per DHCP.
+
+2. La IP virtual flotant que configurarem serà la 192.168.56.100, i serà l'adreça que utilitzaran els clients per a connectar-se als serveis DNS, FTP i WEB. D'aquesta manera, si un servidor cau, l'altre assumirà automàticament la IP virtual i els serveis continuaran funcionant.
+
+3. Cal assegurar-se que ambdues màquines servidores tenen connectivitat entre si i poden resoldre noms mútuament. Verificarem la connectivitat amb un simple ping entre elles abans de començar qualsevol configuració.
+
+4. En aquesta primera fase configurarem Keepalived per a crear una IP virtual flotant que saltarà automàticament entre els dos servidors en cas de fallada. Primerament, instal·lem el paquet keepalived a ambdós servidors.      
+<img width="635" height="346" alt="projecte37" src="https://github.com/user-attachments/assets/7c844b2f-cf7d-41da-8780-2da6c3147985" />
+
+5. Tot seguit, configurem l'arxiu de keepalived al servidor MASTER. En aquest arxiu especificarem que el servidor actuarà com a MASTER amb prioritat 150, autenticació amb contrasenya iesebreHA i definint la IP virtual 192.168.56.100.        
+<img width="651" height="454" alt="projecte5" src="https://github.com/user-attachments/assets/313b9752-f31f-4a16-be96-3fedbef4327b" />
+
+6. A continuació, configurem l'arxiu equivalent al servidor SLAVE, establint l'estat BACKUP i prioritat 100. La contrasenya d'autenticació ha de ser idèntica a la del MASTER per a que ambdós servidors puguin comunicar-se correctament.        
+<img width="819" height="101" alt="projecte51" src="https://github.com/user-attachments/assets/3519a3c7-647e-4763-8cd1-2f299c253a02" />
+
+7. Seguidament, habilitem i iniciem el servei keepalived al MASTER. Repetim el mateix procés al servidor SLAVE per a que quedi en espera i preparat per a prendre la IP virtual si el MASTER falla.      
+<img width="825" height="383" alt="projecte54" src="https://github.com/user-attachments/assets/bca0baf8-af25-4e47-98f0-689a2676c108" />
+
+8. Un cop iniciat el servei al SLAVE, verifiquem que no té la IP virtual assignada, ja que aquesta només ha d'aparèixer al MASTER mentre estigui actiu. La comanda no ha de mostrar cap sortida.          
+<img width="819" height="338" alt="projecte38" src="https://github.com/user-attachments/assets/49c1406c-b0c3-48a4-ba34-be937e5a34fd" />
+
+9. Finalment, verifiquem que la IP virtual 192.168.56.100 està activa al servidor MASTER. La sortida ha de mostrar inet 192.168.56.100/24 scope global secondary enp0s3, confirmant que la IP virtual està assignada correctament.
+
+10. En aquesta fase configurarem el servei DNS utilitzant Bind9, on el servidor MASTER actuarà com a primari i el SLAVE replicarà les zones automàticament. Instal·lem els paquets necessaris a ambdós servidors.        
+<img width="587" height="371" alt="projecte42" src="https://github.com/user-attachments/assets/050f0e3b-39a2-4d69-8c99-8d968d9792ca" />
+
+11. Tot seguit, al servidor MASTER configurem l'arxiu named.conf.local declarant les zones directa i inversa. És fonamental afegir les directives allow-transfer i also-notify cap al SLAVE (192.168.56.11) per a permetre la replicació de zones.          
+<img width="659" height="576" alt="projecte43" src="https://github.com/user-attachments/assets/02bc4fbf-f681-48db-ab12-2f2c7c8dc6dd" />
+
+12. A continuació, creem l'arxiu de zona directa db.iesebre.lan al MASTER. En aquesta zona definim els registres NS per a ambdós servidors (ns1 i ns2), i fem que els serveis www i ftp apuntin a la IP virtual 192.168.56.100.        
+<img width="659" height="421" alt="projecte44" src="https://github.com/user-attachments/assets/1ce39098-0cce-4ade-9863-8b6e06871205" />
+
+13. Seguidament, creem l'arxiu de zona inversa db.192.168.56 per a resoldre IPs a noms. Configurem els registres PTR per a les IPs .10 (ns1), .11 (ns2) i .100 (www i ftp), assegurant la coherència amb la zona directa.            
+<img width="714" height="209" alt="projecte48" src="https://github.com/user-attachments/assets/6ba3e860-4e08-4a20-9274-b397ad06cf61" />
+
+14. Després de crear ambdues zones, verifiquem la sintaxi amb named-checkconf i named-checkzone. Ambdues comprovacions han de mostrar OK, confirmant que la configuració del servidor DNS mestre és correcta i no conté errors.          
+<img width="650" height="397" alt="projecte16" src="https://github.com/user-attachments/assets/c253bfd4-8bf0-42f5-8e50-267e7fbff193" />
+
+15. Tot seguit, al servidor SLAVE configurem les opcions generals editant named.conf.options. Establim que el servei escolti a la IP 192.168.56.11, permetem consultes des de qualsevol origen i configurem reenviadors a DNS públics.          
+<img width="590" height="351" alt="projecte15" src="https://github.com/user-attachments/assets/31765f3a-67e8-4405-9ced-32c329824891" />
+
+16. A continuació, declarem les zones al SLAVE editant named.conf.local. Utilitzem type slave i especifiquem masters { 192.168.56.10; } per a que el servidor descarregui les zones directament del MASTER.        
+<img width="815" height="382" alt="projecte47" src="https://github.com/user-attachments/assets/7328ec4c-46dc-4b48-a19a-9b2f1f2f2420" />
+
+17. Seguidament, reiniciem i verifiquem el servei named al SLAVE. El servei ha d'aparèixer com a active (running) i, si tot funciona, les zones es descarregaran automàticament des del MASTER.          
+<img width="739" height="415" alt="projecte57" src="https://github.com/user-attachments/assets/a95e901c-7c0e-4896-8859-4d95eca56a2e" />
+
+18. Finalment, des del client verifiquem la resolució DNS consultant ambdós servidors. Les consultes a www.iesebre.lan i ftp.iesebre.lan han de resoldre a la IP virtual 192.168.56.100 independentment del servidor DNS consultat.
+
+19. En aquesta fase configurarem el servei DHCP amb failover natiu per a que ambdós servidors es sincronitzin i ofereixin alta disponibilitat en l'assignació d'adreces IP. Instal·lem el servei a ambdós servidors.          
+<img width="663" height="497" alt="projecte21" src="https://github.com/user-attachments/assets/f5d06899-f70b-450c-bb46-365afae65a03" />
+
+20. Tot seguit, configurem la interfície de xarxa per on el DHCP servirà les peticions, editant /etc/default/isc-dhcp-server a ambdues màquines. Establim la variable INTERFACESv4="enp0s3" per a que el servei escolti exclusivament en aquesta interfície.        
+<img width="567" height="678" alt="projecte18" src="https://github.com/user-attachments/assets/cf02edee-24c8-475b-93cc-464e8f091607" />
+
+21. A continuació, al servidor MASTER configurem l'arxiu dhcpd.conf definint el bloc failover peer "dhcp-ha" com a primari. Especifiquem la IP 192.168.56.10, el peer a 192.168.56.11, i paràmetres com mclt 3600 i split 128 per al balanceig de càrrega.        
+<img width="663" height="642" alt="projecte22" src="https://github.com/user-attachments/assets/89dd74ce-e5d1-4359-8423-f60624da1131" />
+
+22. Seguidament, al servidor SLAVE configurem l'arxiu dhcpd.conf amb el bloc failover com a secundari. Les IPs s'inverteixen (address .11, peer .10) i s'ometen els paràmetres mclt i split, ja que només els defineix el primari.          
+<img width="824" height="507" alt="projecte39" src="https://github.com/user-attachments/assets/210c5e12-f984-42c6-9683-4e0fb0e7ee26" />
+
+23. A continuació, reiniciem i verifiquem el servei DHCP al MASTER. El servei ha d'aparèixer actiu i als logs es pot observar l'estat de la comunicació amb el peer de failover.        
+<img width="739" height="339" alt="projecte56" src="https://github.com/user-attachments/assets/c916fe25-8cb2-469c-9a63-68aeeda93635" />
+
+24. Tot seguit, des del client verifiquem la configuració de xarxa per terminal. L'adreça IP ha d'estar dins del rang 192.168.56.50-200, confirmant que el servei DHCP està assignant adreces correctament.        
+<img width="596" height="495" alt="projecte41" src="https://github.com/user-attachments/assets/4d7db335-2154-4878-bd5e-c332fdc500f5" />
+
+25. Finalment, verifiquem la configuració de xarxa del client per interfície gràfica. La ruta per defecte ha de ser 192.168.56.100 i el servidor DNS també ha d'apuntar a la IP virtual, assegurant alta disponibilitat en tots els serveis.
+
+26. En aquesta fase configurarem el servei FTP amb vsftpd i sincronitzarem els arxius entre ambdós servidors utilitzant rsync. Instal·lem els paquets necessaris a ambdues màquines.      
+<img width="756" height="545" alt="projecte61" src="https://github.com/user-attachments/assets/45a5b444-5052-4a7f-ba2e-fa4e7a06dd1e" />
+
+27. Tot seguit, fem una còpia de seguretat de la configuració original i editem vsftpd.conf a ambdós servidors. Habilitem l'accés anònim i local, l'escriptura, i establim el directori arrel a /srv/ftp per a tots els usuaris.        
+<img width="822" height="429" alt="projecte63" src="https://github.com/user-attachments/assets/ef5f41de-f69d-4d72-a440-1b15bdd07749" />
+
+28. A continuació, creem l'estructura de directoris FTP i reiniciem el servei al MASTER. Verifiquem que el servei apareix com a active (running), confirmant que està preparat per a servir connexions FTP.        
+<img width="836" height="444" alt="projecte64" src="https://github.com/user-attachments/assets/387e8d7f-17a9-49e7-8db4-a7255cb53aeb" />
+
+29. Seguidament, repetim el mateix procés al servidor SLAVE. Ambdós servidors han d'estar actius i funcionant per a garantir l'alta disponibilitat del servei FTP.        
+<img width="819" height="409" alt="projecte68" src="https://github.com/user-attachments/assets/a4e191ed-bd64-48fa-ac19-2e120b37013f" />
+
+30. Tot seguit, instal·lem i activem el servei SSH al SLAVE per a permetre la sincronització remota. Generem una clau SSH al MASTER i la copiem al SLAVE per a que la connexió no requereixi contrasenya.        
+<img width="674" height="83" alt="projecte69" src="https://github.com/user-attachments/assets/d1b8fbe7-1c26-4634-98f9-4114e55e9e8b" />
+
+31. A continuació, verifiquem que la connexió SSH funciona correctament des del MASTER al SLAVE sense necessitat d'introduir contrasenya. La comunicació ha de ser fluida per a garantir la sincronització automàtica.        
+<img width="674" height="171" alt="projecte70" src="https://github.com/user-attachments/assets/0d2e9bb3-7e03-4305-9c4b-ad1041ec85aa" />
+
+32. Seguidament, creem l'script de sincronització sync-ftp.sh al MASTER amb la comanda rsync. Li donem permisos d'execució per a que pugui ser executat automàticament pel cron.        
+<img width="742" height="619" alt="projecte72" src="https://github.com/user-attachments/assets/39d92ffb-42de-484c-8641-1d8ec843088c" />
+
+33. Tot seguit, configurem una tasca programada editant el crontab de root. Afegim una línia per a executar l'script de sincronització cada minut, redirigint la sortida a un arxiu de log per a monitorització.      
+<img width="519" height="257" alt="projecte121" src="https://github.com/user-attachments/assets/7823ead2-4452-4898-a979-610c7a793bb6" />
+
+34. A continuació, des del client provem la connexió FTP utilitzant el nom DNS ftp.iesebre.lan. Això verifica que tant el DNS com el servei FTP funcionen correctament a través de la IP virtual.        
+<img width="595" height="631" alt="projecte74" src="https://github.com/user-attachments/assets/9865a6ae-1d62-4ea7-b86c-b095eb0d7d9b" />
+
+35. Finalment, provem les operacions bàsiques FTP: llistar directoris amb ls, canviar al directori de pujades amb cd upload, pujar un arxiu amb put i descarregar-lo amb get. Totes les operacions han de completar-se correctament.
+
+36. En aquesta darrera fase configurarem el servidor web amb Apache i sincronitzarem el contingut entre ambdós servidors. Instal·lem Apache a ambdues màquines.      
+<img width="828" height="572" alt="projecte80" src="https://github.com/user-attachments/assets/e670a2df-d06c-4f40-9d5c-fab13b8a5ac3" />
+
+37. Tot seguit, creem la pàgina web principal al MASTER editant index.html. La pàgina inclou JavaScript per a mostrar dinàmicament el nom del servidor i la IP, permetent identificar quin servidor està servint el contingut en cada moment.        
+<img width="585" height="441" alt="projecte78" src="https://github.com/user-attachments/assets/a2497cf7-9811-4997-b266-a2817ab46591" />
+
+38. A continuació, configurem els ports d'escolta d'Apache al MASTER editant ports.conf. Afegim Listen 192.168.56.10:80 i Listen 192.168.56.100:80 per a que el servidor respongui tant a la IP física com a la virtual.          
+<img width="612" height="389" alt="projecte79" src="https://github.com/user-attachments/assets/5e9fb76a-741b-40d1-93bd-6239d20f1bb3" />
+
+39. Seguidament, configurem els ports al SLAVE de manera similar, però utilitzant la seva IP física 192.168.56.11. La IP virtual 192.168.56.100 apareix a ambdós, ja que qualsevol dels dos la pot tenir activa.      
+<img width="734" height="459" alt="projecte26" src="https://github.com/user-attachments/assets/a3ff9ea6-56db-446b-be71-47c279f5a091" />
+
+40. Tot seguit, configurem el VirtualHost per al nostre domini al MASTER. Establim el ServerName com a iesebre.lan, el ServerAlias com a www.iesebre.lan i el DocumentRoot a /var/www/html.          
+<img width="693" height="459" alt="projecte30" src="https://github.com/user-attachments/assets/f5a83ecf-ddb7-4f2a-a1cd-2357a0877785" />
+
+41. A continuació, configurem el VirtualHost al SLAVE amb la mateixa configuració. El DocumentRoot ha de ser idèntic per a que el contingut sincronitzat es mostri correctament.        
+<img width="820" height="210" alt="projecte83" src="https://github.com/user-attachments/assets/6c0c0549-7bff-4290-87d2-6995843b0759" />
+
+42. Seguidament, sincronitzem el contingut web del MASTER al SLAVE executant manualment rsync. Verifiquem que l'arxiu index.html es transfereix correctament i queda disponible al servidor secundari.        
+<img width="820" height="715" alt="projecte84" src="https://github.com/user-attachments/assets/bcd12190-c951-40c9-90af-246154462f9f" />
+
+43. Tot seguit, afegim la tasca de sincronització web al crontab de root. Afegim una línia per a que el contingut de /var/www/html/ es sincronitzi cada minut, de manera similar a la configuració FTP.        
+<img width="820" height="428" alt="projecte85" src="https://github.com/user-attachments/assets/703206e5-a5d1-404c-aa73-5d1b0315ca18" />
+
+44. Finalment, reiniciem i verifiquem el servei Apache al MASTER. El servei ha d'aparèixer com a active (running), confirmant que el servidor web està preparat per a rebre peticions HTTP a través de la IP virtual.
+
+45. Un cop completada tota la configuració, realitzem una verificació global des del client. Comprovem la resolució DNS consultant ambdós servidors, verifiquem que el client té IP del rang DHCP, i accedim al FTP i al WEB a través de la IP virtual.
+
+46. Per a comprovar l'alta disponibilitat, podem simular una caiguda del servidor MASTER aturant el servei keepalived. En pocs segons, el SLAVE ha d'assumir la IP virtual i tots els serveis (DNS, FTP, WEB) han de continuar funcionant sense interrupció perceptible per al client.
+
+47. El sistema complet queda documentat i preparat per a ser replicat. Recordeu que els canvis en zones DNS s'han de fer sempre al MASTER incrementant el número de sèrie, i que la sincronització d'arxius FTP i WEB es realitza automàticament cada minut.
 
 ### Aplicació d'auditoria i ús d'eines
 
