@@ -605,9 +605,9 @@ A continuació es mostren tots els documents externs utilitzats o generats duran
 [Accedir al document](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing)
 
 ### Video – Infraestructura de VMs
-[Accedir al video](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing](https://drive.google.com/file/d/1FhNCALw40mjEUHP0pDUBLphgjkYivdql/view?usp=sharing )
+[Accedir al video](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing](https://drive.google.com/file/d/1FhNCALw40mjEUHP0pDUBLphgjkYivdql/view?usp=sharing)
 
 ### Presentació – Projecte Intermodular
-[Accedir a la presentació](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing](https://canva.link/nx7up6zvzf23c5o )
+[Accedir a la presentació](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing](https://canva.link/nx7up6zvzf23c5o)
 
 ---
