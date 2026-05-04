@@ -37,7 +37,7 @@ Aquest procés demostra la utilitat de l’eina desenvolupada i la importància 
 
 Podeu consultar o descarregar el document original en el següent enllaç:
 
---> **[Pla de millora – Document PDF]()**
+--> **[Pla de millora – Document PDF](https://docs.google.com/document/d/1WrAofHdRzAvSEFwUBYHyEF_9h2N-3Xn4/edit?usp=sharing&ouid=107386172793702573921&rtpof=true&sd=true)**
 
 ---
 
