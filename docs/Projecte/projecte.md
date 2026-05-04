@@ -356,9 +356,6 @@ Finalment, hem definit un accés unificat per als clients de la xarxa. Amb aques
 
 47. El sistema complet queda documentat i preparat per a ser replicat. Recordeu que els canvis en zones DNS s'han de fer sempre al MASTER incrementant el número de sèrie, i que la sincronització d'arxius FTP i WEB es realitza automàticament cada minut.
 
-### Aplicació d'auditoria i ús d'eines
-
-
 ### Disseny i desenvolupament de l'aplicació Python
 
 #### Documentació de l’arquitectura i funcionament del projecte
@@ -462,10 +459,6 @@ Aquests expliquen com utilitzar el projecte, com configurar Docker i com funcion
 
 Així és com es relacionen totes les parts del projecte:
 <img width="697" height="607" alt="image" src="https://github.com/user-attachments/assets/96e8897a-2cbc-406c-ade3-77ed7afda63a" />
-
-### Resultats
-
-### Informe de vulnerabilitats trobades
 
 ---
 
