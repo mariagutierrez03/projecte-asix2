@@ -356,6 +356,92 @@ Finalment, hem definit un accés unificat per als clients de la xarxa. Amb aques
 
 47. El sistema complet queda documentat i preparat per a ser replicat. Recordeu que els canvis en zones DNS s'han de fer sempre al MASTER incrementant el número de sèrie, i que la sincronització d'arxius FTP i WEB es realitza automàticament cada minut.
 
+### Configuració de vulnerabilitats per a l'auditoria
+
+#### VULNERABILITAT 1: SSH INSEGUR
+1. En aquesta primera fase configurem el servei SSH de manera insegura per a permetre l'accés com a usuari root, contrasenyes buides i protocols antics. Obrim l'arxiu de configuració principal del servei SSH amb permisos d'administrador.        
+<img width="828" height="595" alt="projecte-part2-1" src="https://github.com/user-attachments/assets/6c947c88-0a5a-4bac-b1c3-98842f235707" />
+
+2. Tot seguit, afegim al final de l'arxiu les directives que debiliten la seguretat: PermitRootLogin yes per a permetre l'accés directe com a root, PermitEmptyPasswords yes per a acceptar contrasenyes buides, PasswordAuthentication yes per a permetre autenticació amb contrasenya, MaxAuthTries 10 per a permetre múltiples intents i Protocol 1 per a habilitar el protocol antic.
+
+3. A continuació, creem un usuari amb contrasenya feble anomenat auditoria, que serà un punt d'entrada vulnerable al sistema. Durant el procés de creació, introduïm una contrasenya simple que l'escàner detectarà com a insegura.        
+<img width="828" height="595" alt="projecte-part2-2" src="https://github.com/user-attachments/assets/7796f8ba-62b0-4b25-86df-904d7f343888" />
+
+4. Seguidament, reiniciem el servei SSH per a aplicar tots els canvis de configuració i verifiquem que el servei es troba actiu i funcionant correctament amb l'estat active (running).        
+<img width="828" height="112" alt="projecte-part2-3" src="https://github.com/user-attachments/assets/785f3e1d-bf3b-4bfc-bc65-2d0217cf6532" />
+
+#### VULNERABILITAT 2: FTP ANÒNIM PERILLÓS
+5. Tot seguit, configurem el servei FTP per a permetre l'accés anònim amb permisos d'escriptura complets. Editem l'arxiu de configuració principal de vsftpd per a habilitar totes les opcions perilloses.        
+<img width="809" height="708" alt="projecte-part2-4" src="https://github.com/user-attachments/assets/ee5e3900-e3e0-4a1e-a464-6f7e6ccd5048" />
+
+6. En aquesta configuració afegim directives crítiques com anonymous_enable=YES per a permetre l'accés sense autenticació, anon_upload_enable=YES i anon_mkdir_write_enable=YES per a permetre pujar i crear directoris, i anon_other_write_enable=YES per a permetre esborrar i modificar arxius. A més, desactivem SSL amb ssl_enable=NO i el chroot amb chroot_local_user=NO.
+
+7. A continuació, assignem permisos complets al directori FTP amb chmod 777 tant al directori arrel com al directori de pujades. Reiniciem el servei i verifiquem que es troba actiu, confirmant que qualsevol usuari anònim pot accedir, llegir i escriure al servidor FTP sense cap restricció.          
+<img width="743" height="191" alt="projecte-part2-5" src="https://github.com/user-attachments/assets/774536c1-cbee-4893-8fe1-bfc03fee8c81" />
+
+#### VULNERABILITAT 3: APACHE INFO EXPOSADA
+8. Seguidament, configurem el servidor web Apache per a exposar informació sensible del sistema. Primerament, activem els mòduls info, status i autoindex, que permetran mostrar l'estat del servidor, informació de configuració i llistats de directoris.          
+<img width="805" height="235" alt="projecte-part2-6" src="https://github.com/user-attachments/assets/302ee2b5-1391-4b35-a80a-7979aae33bbc" />
+
+9. Tot seguit, editem l'arxiu de configuració del VirtualHost per a afegir les directives que exposen informació. Configurem ServerSignature On i ServerTokens Full per a mostrar la versió completa del servidor, i afegim les seccions /server-status i /server-info accessibles sense restriccions.        
+<img width="702" height="643" alt="projecte-part2-7" src="https://github.com/user-attachments/assets/e954252c-a0cb-4e0c-88e7-2406795a818a" />
+
+10. Una versió alternativa de la configuració que també utilitzem estableix el DocumentRoot a /var/www/html i manté totes les opcions perilloses actives. Ambdues configuracions exposen informació sensible del servidor web.        
+<img width="702" height="643" alt="projecte-part2-8" src="https://github.com/user-attachments/assets/ce887391-e3aa-4b19-aeec-267d2bc3b35d" />
+
+11. A continuació, creem arxius de prova al directori web per a verificar que el llistat de directoris funciona correctament. Creem dos arxius de text i un subdirectori amb contingut, i assignem permisos de lectura globals.        
+<img width="689" height="125" alt="projecte-part2-9" src="https://github.com/user-attachments/assets/0b2ad472-d6d1-42bc-a71b-6d56ab692ff7" />
+
+12. Finalment, reiniciem el servei Apache i verifiquem que es troba actiu. Amb aquesta configuració, qualsevol persona pot accedir a /server-status i /server-info per a obtenir informació detallada del servidor, i navegar pels directoris lliurement.        
+<img width="761" height="100" alt="projecte-part2-10" src="https://github.com/user-attachments/assets/1e2b613f-fe84-487e-a50e-c23282dbe1d1" />
+
+#### VULNERABILITAT 4: DNS ZONE TRANSFER OBERT
+13. En aquesta fase configurem el servidor DNS per a permetre la transferència completa de zones a qualsevol sol·licitant. Editem l'arxiu de configuració de zones per a canviar la directiva allow-transfer al valor any, permetent que qualsevol IP pugui descarregar totes les dades de la zona DNS.          
+<img width="590" height="391" alt="projecte-part2-11" src="https://github.com/user-attachments/assets/72b69814-1066-4bb9-a5dd-20595534c816" />
+
+14. Aquesta configuració és especialment perillosa perquè permet a un atacant enumerar tots els hosts, serveis i IPs de la xarxa interna simplement fent una consulta de transferència de zona. La directiva also-notify es manté cap al servidor SLAVE per a no trencar la replicació legítima.
+
+15. Tot seguit, editem les opcions generals del servidor DNS per a afegir més vulnerabilitats. Configurem allow-recursion { any; } per a permetre consultes recursives des de qualsevol origen, la qual cosa pot ser utilitzada per a atacs d'amplificació DNS. També establim una versió falsa "9.11.3" per a confondre als escàners.          
+<img width="603" height="304" alt="projecte-part2-12" src="https://github.com/user-attachments/assets/47da8954-109e-4703-ad30-85f777541b00" />
+
+16. Finalment, reiniciem el servei named i verifiquem que es troba actiu. Amb aquesta configuració, el servidor DNS és vulnerable a transferència de zona no autoritzada, amplificació DNS i exposa informació de versió falsa.          
+<img width="738" height="102" alt="projecte-part2-13" src="https://github.com/user-attachments/assets/6ed7f26c-1073-4d03-8bce-7a04e7f6f334" />
+
+#### VULNERABILITAT 5: PORTS I SERVEIS INNECESSARIS
+17. En aquesta fase instal·lem serveis addicionals innecessaris que obriran ports perillosos al sistema. Executem l'actualització de paquets i instal·lem telnetd, nfs-kernel-server, samba i mysql-server, quatre serveis que no són necessaris per a la infraestructura però que crearan vulnerabilitats.            
+<img width="590" height="101" alt="projecte-part2-14" src="https://github.com/user-attachments/assets/2c48070f-8c4e-4827-a0cf-eb29907c6d90" />
+<img width="821" height="113" alt="projecte-part2-15" src="https://github.com/user-attachments/assets/2d7427f6-cb6d-4d80-a797-fcf290ff7125" />
+
+18. Tot seguit, obrim els ports corresponents al tallafoc amb ufw allow per a cada un dels serveis: telnet (23), NFS (2049), Samba (139 i 445) i MySQL (3306). Iniciem tots els serveis i verifiquem que cadascun es troba actiu amb l'estat active.          
+<img width="482" height="414" alt="projecte-part2-16" src="https://github.com/user-attachments/assets/81c20653-860b-44eb-a13b-578b07639533" />
+<img width="834" height="825" alt="projecte-part2-18" src="https://github.com/user-attachments/assets/cbd7c57d-9f15-41f8-b974-8e6983f66aa2" />
+
+19. En el cas específic de Telnet, el servei s'executa a través del superservidor inetutils-inetd. Verifiquem el seu estat i confirmem que el port 23 es troba escoltant connexions, la qual cosa suposa un risc crític ja que les credencials viatgen en text pla per la xarxa.        
+<img width="834" height="494" alt="projecte-part2-17" src="https://github.com/user-attachments/assets/2dde6881-f565-4dfa-b87d-83ccaf12e64a" />
+
+#### VULNERABILITAT 6: SAMBA COMPARTIT SENSE CONTRASENYA
+20. Seguidament, configurem el servei Samba per a crear recursos compartits accessibles sense cap mena d'autenticació. Editem l'arxiu de configuració principal de Samba i afegim dos recursos al final de l'arxiu.          
+<img width="834" height="825" alt="projecte-part2-19" src="https://github.com/user-attachments/assets/446dba39-56e4-486b-95bc-df0baf7a6a32" />
+
+21. El primer recurs, anomenat [compartit], apunta al directori /srv/ftp i permet accés de lectura i escriptura sense contrasenya amb guest ok = yes. El segon recurs, anomenat [confidencial], és especialment perillós ja que comparteix tot el directori /etc, que conté arxius de configuració sensibles del sistema, també sense protecció.
+
+22. Tot seguit, reiniciem el servei Samba i verifiquem que es troba actiu. Amb aquesta configuració, qualsevol persona a la xarxa pot accedir als recursos compartits sense necessitat de credencials, podent llegir i modificar arxius del sistema.            
+<img width="741" height="105" alt="projecte-part2-20" src="https://github.com/user-attachments/assets/54c1fccd-1baa-4b10-a758-040b7dcace81" />
+
+#### VULNERABILITAT 7: MYSQL SENSE CONTRASENYA
+23. En aquesta darrera fase, configurem el servei MySQL de manera insegura. Primerament, modifiquem l'usuari root per a que no requereixi contrasenya, utilitzant autenticació nativa i contrasenya buida, la qual cosa és extremadament perillosa.            
+<img width="824" height="281" alt="projecte-part2-21" src="https://github.com/user-attachments/assets/5ce1bda1-d85b-4039-b655-ba38358ad6ca" />
+
+24. A continuació, creem un usuari anomenat admin amb una contrasenya feble admin123 i li concedim tots els privilegis sobre totes les bases de dades. Apliquem els canvis amb FLUSH PRIVILEGES per a que les modificacions tinguin efecte immediatament.
+
+25. Tot seguit, editem l'arxiu de configuració de MySQL per a permetre connexions remotes, canviant el paràmetre bind-address de 127.0.0.1 a 0.0.0.0. Això obre el servei a totes les interfícies de xarxa, permetent connexions des de qualsevol màquina externa.        
+<img width="824" height="821" alt="projecte-part2-22" src="https://github.com/user-attachments/assets/87e537fa-4c1b-4644-817a-9931ccda2f19" />
+
+26. Finalment, reiniciem el servei MySQL i verifiquem que es troba actiu. Amb aquesta configuració, qualsevol persona pot connectar-se a la base de dades utilitzant l'usuari admin amb la contrasenya admin123, o fins i tot sense contrasenya amb l'usuari root local.          
+<img width="824" height="105" alt="projecte-part2-23" src="https://github.com/user-attachments/assets/99e95b8f-7ee4-42d4-85e6-5920fe457732" />
+
+---
+
 ### Disseny i desenvolupament de l'aplicació Python
 
 #### Documentació de l’arquitectura i funcionament del projecte
