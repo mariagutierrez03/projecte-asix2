@@ -597,6 +597,9 @@ A continuació es mostren tots els documents externs utilitzats o generats duran
 ### Document 5 – Document formació complementària
 [Accedir al document](https://drive.google.com/file/d/1H88PxxbeFa39Jw9obiI3Kb8C4HxL1yvw/view?usp=sharing)
 
+### Document 6 – Tauler de tasques (KanbanFlow)
+[Accedir al tauler KanbanFlow](https://kanbanflow.com/board/ckR9VJH)
+
 ### Video – Infraestructura de VMs
 [Accedir al vídeo](https://drive.google.com/file/d/1FhNCALw40mjEUHP0pDUBLphgjkYivdql/view?usp=sharing)
 
