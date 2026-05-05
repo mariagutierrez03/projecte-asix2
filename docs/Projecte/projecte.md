@@ -686,6 +686,12 @@ A continuació es mostren tots els documents externs utilitzats o generats duran
 ### Document 6 – Tauler de tasques (KanbanFlow)
 [Accedir al tauler KanbanFlow](https://kanbanflow.com/board/ckR9VJH)
 
+### Document 7 – Programa d’auditoria (codi font)
+[Accedir al document](https://drive.google.com/file/d/1ltAeFdQfbLL00dozAPTJ5m5xMVV9jFf6/view?usp=sharing)
+
+### Document 8 – Codi de la Landing Page
+[Accedir al codi de la Landing Page](https://drive.google.com/drive/folders/15gDU6AHg8qOm1me8txXgCEi2hq4j9qty?usp=sharing)
+
 ### Vídeo – Infraestructura de VMs
 [Accedir al vídeo](https://drive.google.com/file/d/120w5v2CMggodJCxvZFT9t9G3VHv3et7a/view?usp=sharing)
 
