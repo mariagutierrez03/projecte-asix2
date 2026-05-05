@@ -32,7 +32,7 @@ Aquest manual ha estat dissenyat per ser **clar, pedagògic i útil**, tant per 
 ## Accés al document complet
 Podeu consultar o descarregar el manual en el següent enllaç:
 
---> **[Manual d'Usuari – Escàner de Xarxa Professional (PDF)](https://drive.google.com/file/d/18bxqaZ_D9Tm_bSL4WM9rJVr2vePSJ0u_/view?usp=sharing)**
+**[Manual d'Usuari – Escàner de Xarxa Professional (PDF)](https://drive.google.com/file/d/18bxqaZ_D9Tm_bSL4WM9rJVr2vePSJ0u_/view?usp=sharing)**
 
 ##  Autoria
 Document elaborat per:
