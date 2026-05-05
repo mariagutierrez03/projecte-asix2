@@ -686,8 +686,8 @@ A continuació es mostren tots els documents externs utilitzats o generats duran
 ### Document 6 – Tauler de tasques (KanbanFlow)
 [Accedir al tauler KanbanFlow](https://kanbanflow.com/board/ckR9VJH)
 
-### Video – Infraestructura de VMs
-[Accedir al vídeo](https://drive.google.com/file/d/1FhNCALw40mjEUHP0pDUBLphgjkYivdql/view?usp=sharing)
+### Vídeo – Infraestructura de VMs
+[Accedir al vídeo](https://drive.google.com/file/d/120w5v2CMggodJCxvZFT9t9G3VHv3et7a/view?usp=sharing)
 
 ### Presentació – Projecte Intermodular
 [Accedir a la presentació](https://canva.link/nx7up6zvzf23c5o)
